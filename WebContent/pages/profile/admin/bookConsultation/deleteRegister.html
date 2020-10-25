@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Deletar cadastro</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <form class="form" method="post">
+    <p> Deseja realmente excluir este registro?</p>
+
+    <div class="field">
+      <label for="nome">Titulo</label>
+      <input type="text" id="titulo" name="titulo" placeholder="Dados retornados da consulta" disabled>
+    </div>
+
+    <div class="field">
+      <label for="autor">Nome do autor</label>
+      <input type="text" id="autor" name="autor" placeholder="Dados retornados da consulta" disabled>
+    </div>
+
+    <div>
+       <label for="ano">Ano da publicação</label>
+      <input type="text" id="ano" name="ano" placeholder="Dados retornados da consulta" disabled>
+
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" name="isbn" placeholder="Dados retornados da consulta" disabled>
+
+      <label for="edicao">Edição</label>
+      <input type="text" id="edicao" name="edicao" placeholder="Dados retornados da consulta" disabled>
+
+      <label for="edicao">Idioma</label>
+      <input type="text" id="idioma" name="idioma" placeholder="Dados retornados da consulta" disabled>
+
+      <label for="edicao">Gênero</label>
+      <input type="text" id="genero" name="genero" placeholder="Dados retornados da consulta" disabled>
+
+    </div>
+
+    <div class="field">
+      <label for="sinopse">Sinopse</label>
+      <textarea name="sinopse" id="sinopse" placeholder="Dados retornados da consulta" disabled></textarea>
+    </div>
+
+    <input type="submit" name="deletar" value="Deletar">
+  </form>
+</body>
+
+</html>
