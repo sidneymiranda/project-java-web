@@ -4,6 +4,11 @@
 	height: 100vh;
 }
 
+.grid-template {
+	grid-template: 'header header header' 10vh 'sidebar content content'
+		90vh/0.3fr 2fr;
+}
+
 .header {
 	display: flex;
 	line-height: 10vh;
@@ -11,6 +16,7 @@
 	background-color: #37474f;
 	text-align: right;
 	width: 100vw;
+	position: fixed;
 }
 
 .header-content {
@@ -31,6 +37,7 @@
 	color: #ed7947;
 	font-size: 1.3rem;
 }
+
 .nameUser {
 	align-self: center;
 	font-size: 1.3rem;
@@ -48,10 +55,13 @@
 }
 
 .sidebar {
-	grid-area: sidebar;
-	/* 	background-color: #f7f7f7; */
-	background-color: #0b1f34;
-	height: auto;
+    grid-area: sidebar;
+    /* background-color: #f7f7f7; */
+    background-color: #0b1f34;
+    margin-top: 10vh;
+    position: fixed;
+    height: 90vh;
+    width: 10rem;
 }
 
 .sidebar ul {
@@ -61,37 +71,32 @@
 }
 
 .sidebar ul li, .sidebar ul li a {
-	padding: 1rem 0;
+	padding: 0.6rem 0;
 	text-align: center;
-	color: #00d4ff;
+	color: #fff;
 }
 
 .sidebar ul li:hover {
-	 	background-color: #fff;
-	/* background-color: #00d4ff; */
-	/* 	color: #359b6b; */
+	background-color: #ed7947;
 	color: #0b1f34;
 	transition: 0.3s ease-in;
+	/* background-color: #00d4ff; */
+	/* 	color: #359b6b; */
 }
 
 .sidebar a:hover {
 	text-decoration: none;
-	color: #0b1f34;
+	/* 	color: #0b1f34; */
 }
 
 .selected {
-	background-color: #fff;
-	color: #359b6b !important;
+	background-color: #ed7947;
+	/* color: #359b6b !important; */
 }
 
 .content {
 	grid-area: content;
 	justify-content: center;
-}
-
-.grid-template {
-	grid-template: 'header header header' 10vh 'sidebar content content'
-		90vh/0.4fr 2fr;
 }
 
 .content h1 {
@@ -113,12 +118,13 @@
 }
 
 .input {
-	padding: 0.35rem;
+	padding: 0.4rem;
 	margin-bottom: 0.5rem;
 	margin-top: 0.6rem;
 	text-transform: uppercase;
 	border: 0.1rem solid #ddd;
 	outline-color: #007bff;
+	height: 2rem;
 }
 
 .input-form-query {
@@ -153,6 +159,7 @@
 #sinopse {
 	padding: 0.9rem;
 	text-transform: uppercase;
+	min-height: 5rem;
 }
 
 .buttons {

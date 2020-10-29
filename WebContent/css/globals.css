@@ -5,3 +5,47 @@
   list-style: none;
   font-family: 'Poppins', sans-serif;
 }
+
+.header {
+	display: flex;
+	line-height: 10vh;
+	grid-area: header;
+	background-color: #37474f;
+	text-align: right;
+	width: 100vw;
+}
+
+.header-content {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	width: 80vw;
+	text-align: center;
+	color: #fff;
+}
+
+.title-confirm {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.logo {
+	color: #ed7947;
+	font-size: 1.3rem;
+}
+
+.nameUser {
+	align-self: center;
+	font-size: 1.3rem;
+	color: #fff;
+}
+
+.header-content a {
+	margin-right: 5rem;
+	color: #fff;
+	text-decoration: none !important;
+}
+
+.header-content a:hover {
+	color: #fff;
+}

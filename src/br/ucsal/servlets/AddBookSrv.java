@@ -46,6 +46,7 @@ public class AddBookSrv extends HttpServlet {
 					genre.toUpperCase(),
 					sinope.toUpperCase()));
 
+
 			session.setAttribute("listBooks", listBooks);
 
 			res.sendRedirect("pages/profile/admin/home.jsp");

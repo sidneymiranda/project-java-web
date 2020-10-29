@@ -20,7 +20,7 @@ public class AuthenticatorSrv extends HttpServlet {
 		super();
 	}
 
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked" })
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
@@ -43,7 +43,6 @@ public class AuthenticatorSrv extends HttpServlet {
 					res.addCookie(cookieLogin);
 
 					String profile = (u.getTypeUser().equals("admin")) ? "admin" : "user";					
-					
 					res.sendRedirect("/ProjectJavaWebJSP/pages/profile/" + profile + "/home.jsp?user=" + u.getName());
 					return;
 				}
@@ -51,6 +50,7 @@ public class AuthenticatorSrv extends HttpServlet {
 
 			out.println("<script>alert('Usuário e/ou senha incorreto(s)');</script>");
 			res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+			return;
 		} else {
 			out.println("<script>alert('Não há usuários cadastrados no sistema!');</script>");
 			res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");

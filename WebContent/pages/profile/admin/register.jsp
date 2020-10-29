@@ -21,7 +21,7 @@
 </head>
 
 <body class="grid grid-template">
-	
+	<%@include file="/includes/isLoggedIn.jsp" %>
 	<%@include file="/includes/header.jsp"%>
  	<%@include file="/includes/menu.jsp"%>
 	
@@ -40,7 +40,7 @@
 					<label class="grow"	for="edition">Edição</label>
 				</div>
 				<div class="content-div-input">
-					<input class="input grow" type="text" id="year" name="year" autocomplete="off" required>
+					<input class="input grow" type="text" id="year" name="year" maxlength="4" autocomplete="off" required>
 					<input class="input grow" type="text" id="isbn"	name="isbn" autocomplete="off" required>
 					<input class="input grow"	type="number" min="1" id="edition" name="edition" autocomplete="off" required>
 				</div>

@@ -33,21 +33,24 @@ public class RegisterUserSrv extends HttpServlet {
 		String register = req.getParameter("register");
 		String name = req.getParameter("name");
 		String password = req.getParameter("password");
+		String confirmPasswd = req.getParameter("confirmPassword");
 		String typeUser = req.getParameter("typeUser");
 
 		try {
-			if (register != null && name != null && password != null && typeUser != null) {
-				listUsers.add(new User(name, register, password, typeUser));
+			if (typeUser != null && name != null && register != null && password != null) {
+				if(password.equals(confirmPasswd)) {
+					listUsers.add(new User(name, register, password, typeUser));
 
-				session.setAttribute("listUsers", listUsers);
+					session.setAttribute("listUsers", listUsers);
 
-				// IMPLEMENTAR UMA MSG DE SUCESSO NA CRIAÇÃO DO USUÁRIO ANTES DE REDIRECIONAR
-				res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
-				return;
+					// IMPLEMENTAR UMA MSG DE SUCESSO NA CRIAÇÃO DO USUÁRIO ANTES DE REDIRECIONAR
+					res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+					return;
+				}
 			}
 
-			req.getRequestDispatcher("newUser.jsp").forward(req, res);
-
+			res.sendRedirect("/ProjectJavaWebJSP/pages/registerUser/newUser.jsp");
+			return;
 		} catch (IOException e) {
 			out.println("<script>alert('Erro no cadastro!');</script>");
 			e.printStackTrace();

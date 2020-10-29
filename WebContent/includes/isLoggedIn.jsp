@@ -1,7 +1,7 @@
+
 <%
-	String authenticated = (String) session.getAttribute("authenticated");
-	
-	if (authenticated == "false" || authenticated == null) {
+	boolean user = (Boolean) session.getAttribute("authenticated");
+	if (!user) {
 	response.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
 }
 %>

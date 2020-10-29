@@ -2,8 +2,8 @@ package br.ucsal.model;
 
 public class Book {
 	private String title;
-	private String nameAuthor;
-	private String yearOfPublication;
+	private String author;
+	private String year;
 	private String isbn;
 	private String edition;
 	private String idioma;
@@ -13,11 +13,11 @@ public class Book {
 	public Book() {
 	}
 	
-	public Book(String title, String nameAuthor, String yearOfPublication, String isbn, String edition, String idioma,
+	public Book(String title, String author, String year, String isbn, String edition, String idioma,
 			String genre, String sinopse) {
 		this.title = title;
-		this.nameAuthor = nameAuthor;
-		this.yearOfPublication = yearOfPublication;
+		this.author = author;
+		this.year = year;
 		this.isbn = isbn;
 		this.edition = edition;
 		this.idioma = idioma;
@@ -33,20 +33,20 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getNameAuthor() {
-		return nameAuthor;
+	public String getauthor() {
+		return author;
 	}
 
-	public void setNameAuthor(String nameAuthor) {
-		this.nameAuthor = nameAuthor;
+	public void setauthor(String author) {
+		this.author = author;
 	}
 
-	public String getYearOfPublication() {
-		return yearOfPublication;
+	public String getyear() {
+		return year;
 	}
 
-	public void setYearOfPublication(String yearOfPublication) {
-		this.yearOfPublication = yearOfPublication;
+	public void setyear(String year) {
+		this.year = year;
 	}
 
 	public String getIsbn() {

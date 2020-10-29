@@ -20,12 +20,12 @@
 }
 
 .login-left-content h1 {
-  /* font-size: 2.5rem; */
+   font-size: 3rem;
   color: #00d4ff;
 }
 
 .login-left-content h4 {
-  /* font-size: 2.5rem; */
+  font-size: 1.5rem;
   /* color: #fff; */
   color: #ed7947;
 }
@@ -68,11 +68,11 @@ fieldset {
 }
 
 #registry-login {
-  background-image: url(images/user.svg);
+  background-image: url("../img/user.svg");
 }
 
 #password-login {
-  background-image: url(images/password.svg);
+  background-image: url("../img/password.svg");
 }
 
 #registry-login,

@@ -23,12 +23,9 @@
     <title>Perfil do usuário</title>
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <h3 class="nameUser">Nome do usuário</h3>
-        <a href="${pageContext.request.contextPath}/pages/logoff.jsp">Sair</a>
-      </div>
-    </header>
+
+    	<jsp:include page="/includes/isLoggedIn.jsp"/>
+			<jsp:include page="/includes/header.jsp"/>
     <section class="form">
       <form action="#" method="post" id="form-search">
         <label class="input" for="input-search">Consulta</label>
@@ -38,7 +35,6 @@
         <input type="reset" value="Limpar" class="btn btn-secondary" />
       </form>
     </section>
-    <%-- <script src="${pageContext.request.contextPath}/js/profileDefault.js"></script> --%>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

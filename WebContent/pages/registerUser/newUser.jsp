@@ -34,7 +34,7 @@
 						<input type="password" name="password" placeholder="SENHA" maxlength="10" required /> 
 						<input type="password" name="confirmPassword"	placeholder="REPETIR A SENHA" maxlength="10" required /> 
 						
-						<input type="submit" name="cadastrar" value="CADASTRAR" />
+						<input type="submit" id="register" value="CADASTRAR" />
 					</fieldset>
 				</form>
 			</section>

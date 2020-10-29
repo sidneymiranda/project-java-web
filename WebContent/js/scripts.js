@@ -11,3 +11,5 @@ pageRegister.addEventListener('click', () => {
 	pageHome.classList.remove('selected');
 	pageRegister.classList.add('selected');
 });
+
+
