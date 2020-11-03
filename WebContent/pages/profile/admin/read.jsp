@@ -10,10 +10,9 @@
 </head>
 <body>
 
-	<h1 class="title-confirm">Tem certeza que deseja remover este cadastro?</h1>
+	<h1 class="title-confirm">Livro selecionado</h1>	
 	
-	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/remove-book">
+	<form class="form" method="" action="">
 		<label for="title">Título</label>
 		<input 
 			type="text" 
@@ -58,7 +57,7 @@
 				>
 				<input 
 					class="grow" 
-					type="number" 
+					type="text" 
 					id="edition"
 					name="edition"
 					value="${param.edition}" 
@@ -99,16 +98,12 @@
 		>${param.sinopse}</textarea>
 		
 		<div class="buttons">
-			<input
-				class="btn button-submit" 
-				type="submit" 
-				value="REMOVER"
-			>			
-			<input
-				class="btn button-cancel" 
-				type="button" 
-				value="CANCELAR"
+			<a 
+				class="btn button-cancel"
+				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp?user="+session.getAttribute("userLogado")
 			>
+				VOLTAR
+			</a>			
 		</div>
 	</form>
 

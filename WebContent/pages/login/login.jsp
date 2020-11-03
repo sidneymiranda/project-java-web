@@ -11,7 +11,8 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+	<!-- href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" /> -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" />
 
@@ -64,5 +65,6 @@
 			</div>
 		</section>
 	</div>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 </html>

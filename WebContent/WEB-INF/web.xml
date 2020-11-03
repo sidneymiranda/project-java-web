@@ -24,16 +24,11 @@
 		<servlet-name>addBook</servlet-name>
 		<servlet-class>br.ucsal.servlets.AddBookSrv</servlet-class>
 	</servlet>
-
-	<servlet>
-		<servlet-name>remove</servlet-name>
-		<servlet-class>br.ucsal.servlets.RemoveBookSrv</servlet-class>
-	</servlet>
 	
 	<servlet>
-		<servlet-name>consult</servlet-name>
-		<servlet-class>br.ucsal.servlets.ConsultBookSrv</servlet-class>
-	</servlet>	
+		<servlet-name>crud</servlet-name>
+		<servlet-class>br.ucsal.servlets.CrudSrv</servlet-class>
+	</servlet>
 	
 	
 	<servlet-mapping>
@@ -52,13 +47,9 @@
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>remove</servlet-name>
-		<url-pattern>/remove-book</url-pattern>
+		<servlet-name>crud</servlet-name>
+		<url-pattern>/crud</url-pattern>
 	</servlet-mapping>
 	
-	<servlet-mapping>
-		<servlet-name>consult</servlet-name>
-		<url-pattern>/consult-book</url-pattern>
-	</servlet-mapping>
 
 </web-app>

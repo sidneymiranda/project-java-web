@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>Atualização de dados</title>
+<title>Deleção de dados</title>
 </head>
 <body>
 
-	<h1 class="title-confirm">Atualização do cadastro</h1>
+	<h1 class="title-confirm">Tem certeza que deseja remover este cadastro?</h1>	
 	
-	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/update-book">
+	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
 		<label for="title">Título</label>
 		<input 
 			type="text" 
@@ -21,6 +21,7 @@
 			id="title"
 			name="title"
 			value="${param.title}"
+			readonly
 		>
 		<label for="author">Nome do autor</label>
 		<input 
@@ -29,6 +30,7 @@
 			class="input"
 			id="author"
 			value="${param.author}"
+			readonly
 		>
 		
 		<div class="content-div">
@@ -56,7 +58,7 @@
 				>
 				<input 
 					class="grow" 
-					type="number" 
+					type="text" 
 					id="edition"
 					name="edition"
 					value="${param.edition}" 
@@ -100,13 +102,14 @@
 			<input
 				class="btn button-submit" 
 				type="submit" 
-				value="ATUALIZAR"
-			>			
-			<input
-				class="btn button-cancel" 
-				type="button" 
-				value="CANCELAR"
+				value="REMOVER"
 			>
+			<a 
+				class="btn button-cancel"
+				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp?user="+session.getAttribute("userLogado")
+			>
+				CANCELAR
+			</a>			
 		</div>
 	</form>
 

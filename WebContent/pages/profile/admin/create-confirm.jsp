@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
 <title>Confirmação de dados</title>
 </head>
 <body>
 
-	<h1 class="title-confirm">Verifique os dados antes de confirmar</h1>
+	<!-- <h1 class="title-confirm">Verifique os dados antes de confirmar</h1> -->
 	
 	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/add-book">
+	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
 		<label for="title">Título</label>
 		<input 
 			type="text" 
@@ -104,7 +105,7 @@
 				type="submit" 
 				value="CONFIRMAR"
 			>			
-			<!-- <a href="register.jsp" class="btn button-cancel">CANCELAR</a> -->
+		<a href="create.jsp" class="btn button-cancel">CANCELAR</a>
 		</div>
 	</form>
 

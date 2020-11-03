@@ -1,7 +1,6 @@
 package br.ucsal.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +18,18 @@ public class RegisterUserSrv extends HttpServlet {
 	public RegisterUserSrv() {
 		super();
 	}
+	
+	
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	}
 
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
 		List<User> listUsers = (List<User>) session.getAttribute("listUsers");
-
-		PrintWriter out = res.getWriter();
 
 		listUsers = (listUsers == null) ? new ArrayList<User>() : listUsers;
 
@@ -52,7 +55,6 @@ public class RegisterUserSrv extends HttpServlet {
 			res.sendRedirect("/ProjectJavaWebJSP/pages/registerUser/newUser.jsp");
 			return;
 		} catch (IOException e) {
-			out.println("<script>alert('Erro no cadastro!');</script>");
 			e.printStackTrace();
 		}
 	}
