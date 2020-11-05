@@ -33,19 +33,19 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getauthor() {
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setauthor(String author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public String getyear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setyear(String year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 

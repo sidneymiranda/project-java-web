@@ -33,7 +33,7 @@
 		<section class="form-login">
 			<div class="form-login-content">
 				<nav class="form-login-nav">
-					<a href="${pageContext.request.contextPath}/pages/registerUser/newUser.jsp"
+					<a href="${pageContext.request.contextPath}/pages/createUser/newUser.jsp"
 						id="cadastrar"><span>cadastrar</span></a>
 				</nav>
 

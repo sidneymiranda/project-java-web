@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ucsal.model.Book;
 
-public class BookController implements IBook {
+public class BookDao implements IBook {
 
 	@Override
 	public boolean insert(Book book, List<Book> listBooks) {
@@ -23,11 +23,12 @@ public class BookController implements IBook {
 	}
 
 	@Override
-	public boolean update(String isbn, String title, String author, List<Book> listBooks) {
+	public boolean update(String isbn, String author, String edition, String year, List<Book> listBooks) {
 		for (Book book : listBooks) {
 			if (book.getIsbn().equals(isbn)) {
-				book.setTitle(title);
-				book.setauthor(author);
+				book.setAuthor(author);
+				book.setEdition(edition);
+				book.setYear(year);
 				return true;
 			}
 		}

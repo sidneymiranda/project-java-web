@@ -106,7 +106,7 @@
 			>
 			<a 
 				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp?user="+session.getAttribute("userLogado")
+				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp"
 			>
 				CANCELAR
 			</a>			

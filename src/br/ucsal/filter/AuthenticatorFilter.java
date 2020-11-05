@@ -1,6 +1,7 @@
 package br.ucsal.filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -27,21 +28,19 @@ public class AuthenticatorFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
-
-		/* String urlParaAutenticar = req.getServletPath(); */
 		
-		boolean user = (Boolean) session.getAttribute("authenticated") == null ? false : (Boolean) session.getAttribute("authenticated");
+//		boolean user = (Boolean) session.getAttribute("authenticated") == null ? false : (Boolean) session.getAttribute("authenticated");
 		
-		if (!user) {
-			res.sendRedirect("/ProjectJavaWebJSP/");
+		if (session.getAttribute("userLogado") == null) {
+			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
 			return;
 		}
 
 		chain.doFilter(request, response);
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
 
+	public void init(FilterConfig fConfig) throws ServletException {
 	}
 
 }

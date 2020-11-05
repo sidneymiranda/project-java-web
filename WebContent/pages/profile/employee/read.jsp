@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>Confirmação de dados</title>
+<title>DeleÃ§Ã£o de dados</title>
 </head>
 <body>
 
-	<!-- <h1 class="title-confirm">Verifique os dados antes de confirmar</h1> -->
+	<h1 class="title-confirm">Livro selecionado</h1>	
 	
-	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
-		<label for="title">Título</label>
+	<form class="form" method="" action="">
+		<label for="title">TÃ­tulo</label>
 		<input 
 			type="text" 
 			class="input"
@@ -36,13 +35,13 @@
 		
 		<div class="content-div">
 			<div class="content-div-label">
-				<label class="grow" for="year">Ano da Publicação</label>
+				<label class="grow" for="year">Ano da PublicaÃ§Ã£o</label>
 				<label class="grow" for="isbn">ISBN</label>
-				<label class="grow"	for="edition">Edição</label>
+				<label class="grow"	for="edition">EdiÃ§Ã£o</label>
 			</div>
 			<div class="content-div-input">
 				<input 
-					class="input grow" 
+					class="grow" 
 					type="text" 
 					id="year"
 					name="year" 
@@ -50,7 +49,7 @@
 					readonly
 				>
 				<input 
-					class="input grow" 
+					class="grow" 
 					type="text" 
 					id="isbn"
 					name="isbn"
@@ -58,8 +57,8 @@
 					readonly
 				>
 				<input 
-					class="input grow" 
-					type="number" 
+					class="grow" 
+					type="text" 
 					id="edition"
 					name="edition"
 					value="${param.edition}" 
@@ -70,11 +69,11 @@
 		<div class="content-div">
 			<div class="content-div-label">
 				<label class="grow" for="idioma">Idioma</label>
-				<label class="grow"	for="genre">Gênero</label>
+				<label class="grow"	for="genre">GÃªnero</label>
 			</div>
 			<div class="content-div-label">
 				<input 
-					class="input grow" 
+					class="grow" 
 					type="text" 
 					id="idioma"
 					name="idioma"
@@ -82,7 +81,7 @@
 					readonly
 				>
 				<input 
-					class="input grow" 
+					class="grow" 
 					type="text" 
 					id="genre"
 					name="genre"
@@ -100,14 +99,13 @@
 		>${param.sinopse}</textarea>
 		
 		<div class="buttons">
-			<input
-				class="btn button-submit" 
-				type="submit" 
-				value="CONFIRMAR"
-			>			
-		<a href="create.jsp" class="btn button-cancel">CANCELAR</a>
+			<a 
+				class="btn button-cancel"
+				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp"
+			>
+				VOLTAR
+			</a>			
 		</div>
 	</form>
-
 </body>
 </html>

@@ -24,8 +24,8 @@
 </head>
 
 <body class="grid grid-template">
-	<c:url value="/pages/profile/admin/home.jsp" var="home" />
-	<c:url value="/pages/profile/admin/create.jsp" var="create" />
+	<c:url value="/pages/profile/employee/home.jsp" var="home" />
+	<c:url value="/pages/profile/employee/create.jsp" var="create" />
  	<jsp:include page="/includes/header.jsp"/>
  	
  <nav class="sidebar">
@@ -61,6 +61,8 @@
 		<form class="form" name="register-book" action="create-confirm.jsp?action=create"	method="post">
 			<label for="title">Título</label>
 			<input type="text" name="title" class="input" autocomplete="off" required>
+			
+			
 			
 			<label for="author">Nome do autor</label>
 			<input type="text" name="author" class="input" autocomplete="off" required>
@@ -108,13 +110,18 @@
 			<textarea class="input" id="sinopse" name="sinopse"></textarea>
 		
 			<div class="buttons">
-				<input class="btn btn-white" type="reset" value="Limpar">
+				<input 
+					class="btn button-reset" 
+					type="reset" 
+					value="Limpar"
+				>
 				
 				<input
-					class="btn btn-success" 
+					class="btn button-submit" 
 					type="submit" 
 					value="Cadastrar" 
-					id="newRegister">
+					id="newRegister"
+				>
 			</div>
 		</form>
 	</section>

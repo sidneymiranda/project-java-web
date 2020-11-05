@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.controller.BookController;
+import br.ucsal.controller.BookDao;
 import br.ucsal.model.Book;
 
 public class CrudSrv extends HttpServlet {
@@ -31,9 +31,7 @@ public class CrudSrv extends HttpServlet {
 
 		listBooks = (listBooks == null) ? new ArrayList<Book>() : listBooks;
 
-		String action = req.getParameter("action");
-
-		String author = req.getParameter("name");
+		String author = req.getParameter("author");
 		String title = req.getParameter("title");
 		String year = req.getParameter("year");
 		String isbn = req.getParameter("isbn");
@@ -42,32 +40,36 @@ public class CrudSrv extends HttpServlet {
 		String genre = req.getParameter("genre") == null ? "NÃO INFORMADO" : req.getParameter("genre");
 		String idioma = req.getParameter("idioma") == null ? "NÃO INFORMADO" : req.getParameter("idioma");
 
+		String action = req.getParameter("action");
+		
 		switch (action) {
 
 		case "create":
-			if (new BookController().insert(new Book(title.toUpperCase(), author.toUpperCase(), year,
-					isbn.toUpperCase(), edition + "ª", idioma.toUpperCase(), genre.toUpperCase(), sinope.toUpperCase()),
+			if (new BookDao().insert(new Book(title.toUpperCase(), author.toUpperCase(), year,
+					isbn.toUpperCase(), edition, idioma.toUpperCase(), genre.toUpperCase(), sinope.toUpperCase()),
 					listBooks)) {
 
 				session.setAttribute("listBooks", listBooks);
 			};
-			res.sendRedirect("pages/profile/admin/home.jsp?user=" + session.getAttribute("userLogado"));
+			res.sendRedirect("pages/profile/employee/home.jsp");
 			break;
 
-		case "toList":
-			new BookController().toList();
+		case "read":
+			new BookDao().toList();
 
 			break;
 
 		case "update":
-			new BookController().update(isbn, author, title, listBooks);
-
+			if(new BookDao().update(isbn, author,edition, year, listBooks)) {
+				session.setAttribute("listBooks", listBooks);
+			}
+			res.sendRedirect("pages/profile/employee/home.jsp");
 			break;
 
 		case "delete":
-			if (new BookController().remove(isbn, listBooks)) {
+			if (new BookDao().remove(isbn, listBooks)) {
 				session.setAttribute("listBooks", listBooks);
-				res.sendRedirect("pages/profile/admin/home.jsp");
+				res.sendRedirect("pages/profile/employee/home.jsp");
 			}
 			break;
 

@@ -1,19 +1,22 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>Atualização de dados</title>
+<title>Confirmação de dados</title>
 </head>
 <body>
+	<c:url value="crud" var="servlet" />
+	<c:url value="create" var="action" />
+	
+	<h1 class="title-confirm">Verifique os dados antes de confirmar</h1>
 
-	<h1 class="title-confirm">Atualização do cadastro</h1>
-	
-	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
+	<form class="form" method="post" action="${pageContext.request.contextPath}/${servlet}?action=${action}">
 		<label for="title">Título</label>
 		<input 
 			type="text" 
@@ -21,6 +24,7 @@
 			id="title"
 			name="title"
 			value="${param.title}"
+			readonly
 		>
 		<label for="author">Nome do autor</label>
 		<input 
@@ -29,6 +33,7 @@
 			class="input"
 			id="author"
 			value="${param.author}"
+			readonly
 		>
 		
 		<div class="content-div">
@@ -39,7 +44,7 @@
 			</div>
 			<div class="content-div-input">
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="year"
 					name="year" 
@@ -47,7 +52,7 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="isbn"
 					name="isbn"
@@ -55,8 +60,8 @@
 					readonly
 				>
 				<input 
-					class="grow" 
-					type="text" 
+					class="input grow" 
+					type="number" 
 					id="edition"
 					name="edition"
 					value="${param.edition}" 
@@ -71,7 +76,7 @@
 			</div>
 			<div class="content-div-label">
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="idioma"
 					name="idioma"
@@ -79,7 +84,7 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="genre"
 					name="genre"
@@ -100,14 +105,9 @@
 			<input
 				class="btn button-submit" 
 				type="submit" 
-				value="ATUALIZAR"
+				value="CONFIRMAR"
 			>			
-			<a 
-				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp?user="+session.getAttribute("userLogado")
-			>
-				CANCELAR
-			</a>
+		<a href="home.jsp" class="btn button-cancel">CANCELAR</a>
 		</div>
 	</form>
 

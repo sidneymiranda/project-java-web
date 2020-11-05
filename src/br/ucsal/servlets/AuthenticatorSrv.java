@@ -22,10 +22,9 @@ public class AuthenticatorSrv extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		super.doGet(req, res);
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
@@ -42,24 +41,24 @@ public class AuthenticatorSrv extends HttpServlet {
 				if (u.getRegister().equals(registry) && u.getPassword().equals(password)) {
 
 					session.setAttribute("userLogado", u.getName());
-					session.setAttribute("authenticated", true);
+//					session.setAttribute("authenticated", true);
+					
 					Cookie cookieLogin = new Cookie("user", u.getName());
 					cookieLogin.setMaxAge(60 * 60);
 					res.addCookie(cookieLogin);
 
-					String profile = (u.getTypeUser().equals("admin")) ? "admin" : "user";
+					String profile = (u.getTypeUser().equals("admin")) ? "admin" : (u.getTypeUser().equals("employee")) ? "employee" : "user";
 
-					res.sendRedirect("/ProjectJavaWebJSP/pages/profile/" + profile + "/home.jsp?user="
-							+ session.getAttribute("userLogado"));
+					res.sendRedirect("/ProjectJavaWebJSP/pages/profile/" + profile + "/home.jsp");
 					return;
 				}
 			}
 			
-			res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
 			out.println("<script>alert('Usuário e/ou senha incorreto(s)');</script>");
 			return;
 		} else {
-			res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
 			out.println("<script>alert('Não há usuários cadastrados no sistema!');</script>");
 		}
 

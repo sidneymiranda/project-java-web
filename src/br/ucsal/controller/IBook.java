@@ -10,7 +10,7 @@ public interface IBook {
 	
 	public List<Book> toList();
 	
-	public boolean update(String isbn, String title, String author, List<Book> listBooks);
+	public boolean update(String isbn, String author, String edition, String year, List<Book> listBooks);
 	
 	public boolean remove(String id, List<Book> listBooks);
 	

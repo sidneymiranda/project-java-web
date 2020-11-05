@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>DeleÃ§Ã£o de dados</title>
+<title>Atualização de dados</title>
 </head>
 <body>
 
-	<h1 class="title-confirm">Livro selecionado</h1>	
+	<h1 class="title-confirm">Atualização do cadastro</h1>
 	
-	<form class="form" method="" action="">
-		<label for="title">TÃ­tulo</label>
+	
+	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
+		<label for="title">Título</label>
 		<input 
 			type="text" 
 			class="input"
@@ -29,14 +31,13 @@
 			class="input"
 			id="author"
 			value="${param.author}"
-			readonly
 		>
 		
 		<div class="content-div">
 			<div class="content-div-label">
-				<label class="grow" for="year">Ano da PublicaÃ§Ã£o</label>
+				<label class="grow" for="year">Ano da Publicação</label>
 				<label class="grow" for="isbn">ISBN</label>
-				<label class="grow"	for="edition">EdiÃ§Ã£o</label>
+				<label class="grow"	for="edition">Edição</label>
 			</div>
 			<div class="content-div-input">
 				<input 
@@ -44,8 +45,7 @@
 					type="text" 
 					id="year"
 					name="year" 
-					value="${param.year}" 
-					readonly
+					value="${param.year}"
 				>
 				<input 
 					class="grow" 
@@ -60,15 +60,14 @@
 					type="text" 
 					id="edition"
 					name="edition"
-					value="${param.edition}" 
-					readonly
+					value="${param.edition}"
 				>
 			</div>
 		</div>
 		<div class="content-div">
 			<div class="content-div-label">
 				<label class="grow" for="idioma">Idioma</label>
-				<label class="grow"	for="genre">GÃªnero</label>
+				<label class="grow"	for="genre">Gênero</label>
 			</div>
 			<div class="content-div-label">
 				<input 
@@ -76,7 +75,7 @@
 					type="text" 
 					id="idioma"
 					name="idioma"
-					value="${param.idioma}" 
+					value="${param.idioma != '' ? param.idioma : 'NÃO INFORMADO'}" 
 					readonly
 				>
 				<input 
@@ -84,7 +83,7 @@
 					type="text" 
 					id="genre"
 					name="genre"
-					value="${param.genre}" 
+					value="${param.genre != '' ? param.genre : 'NÃO INFORMADO'}" 
 					readonly
 				>
 			</div>
@@ -93,17 +92,21 @@
 			for="sinopse">Sinopse</label>
 		<textarea 
 			id="sinopse"
-			name="sinopse" 
-			readonly
-		>${param.sinopse}</textarea>
+			name="sinopse"
+		>${param.sinopse != '' ? param.sinopse : 'NÃO INFORMADO'}</textarea>
 		
 		<div class="buttons">
+			<input
+				class="btn button-submit" 
+				type="submit" 
+				value="ATUALIZAR"
+			>			
 			<a 
 				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp?user="+session.getAttribute("userLogado")
+				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp?user="+session.getAttribute("userLogado")
 			>
-				VOLTAR
-			</a>			
+				CANCELAR
+			</a>
 		</div>
 	</form>
 

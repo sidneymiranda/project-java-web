@@ -12,14 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import br.ucsal.model.User;
 
-public class RegisterUserSrv extends HttpServlet {
+public class CreateUserSrv extends HttpServlet {
 	private static final long serialVersionUID = -3470928178875222284L;
 
-	public RegisterUserSrv() {
+	public CreateUserSrv() {
 		super();
 	}
-	
-	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,17 +35,24 @@ public class RegisterUserSrv extends HttpServlet {
 		String name = req.getParameter("name");
 		String password = req.getParameter("password");
 		String confirmPasswd = req.getParameter("confirmPassword");
-		String typeUser = req.getParameter("typeUser");
+		String typeUser = req.getParameter("typeUser") == null ? "default" : req.getParameter("typeUser");
 
 		try {
+			if (listUsers.isEmpty()) {
+				session.setAttribute("listUsers", listUsers.add(new User("admin", "0000", "admin", "admin")));
+			}
+
 			if (typeUser != null && name != null && register != null && password != null) {
-				if(password.equals(confirmPasswd)) {
+				if (password.equals(confirmPasswd)) {
 					listUsers.add(new User(name, register, password, typeUser));
 
 					session.setAttribute("listUsers", listUsers);
 
 					// IMPLEMENTAR UMA MSG DE SUCESSO NA CRIAÇÃO DO USUÁRIO ANTES DE REDIRECIONAR
-					res.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+					if (typeUser.equals("admin")) {
+						res.sendRedirect("/ProjectJavaWebJSP/pages/profile/admin/users.jsp");
+					}
+					res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
 					return;
 				}
 			}

@@ -1,5 +1,5 @@
 <%
-	session.setAttribute("authenticated", false);
-	/* session.setAttribute("userLogado", ""); */
-	response.sendRedirect("/ProjectJavaWebJSP/pages/login/login.jsp");
+	/* session.setAttribute("authenticated", false); */
+	session.setAttribute("userLogado", null);
+	response.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
 %>
