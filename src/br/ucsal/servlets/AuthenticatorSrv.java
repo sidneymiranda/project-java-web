@@ -49,16 +49,16 @@ public class AuthenticatorSrv extends HttpServlet {
 
 					String profile = (u.getTypeUser().equals("admin")) ? "admin" : (u.getTypeUser().equals("employee")) ? "employee" : "user";
 
-					res.sendRedirect("/ProjectJavaWebJSP/pages/profile/" + profile + "/home.jsp");
+					res.sendRedirect("/VirtualBookcase/pages/profile/" + profile + "/home.jsp");
 					return;
 				}
 			}
 			
-			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
+			res.sendRedirect("/VirtualBookcase/pages/login.jsp");
 			out.println("<script>alert('Usuário e/ou senha incorreto(s)');</script>");
 			return;
 		} else {
-			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
+			res.sendRedirect("/VirtualBookcase/pages/login.jsp");
 			out.println("<script>alert('Não há usuários cadastrados no sistema!');</script>");
 		}
 

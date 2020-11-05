@@ -10,7 +10,7 @@
 <title>Configuração de usuários</title>
 </head>
 <body>
-<h1>Atualização de cadastro</h1>
+<h1>Registro</h1>
 <form class="form" action="${pageContext.request.contextPath}/crudAdmin?action=${param.action}" method="post">
 	<label>Nome</label>
 	<input 

@@ -32,7 +32,7 @@ public class AuthenticatorFilter implements Filter {
 //		boolean user = (Boolean) session.getAttribute("authenticated") == null ? false : (Boolean) session.getAttribute("authenticated");
 		
 		if (session.getAttribute("userLogado") == null) {
-			res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
+			res.sendRedirect("/VirtualBookcase/pages/login.jsp");
 			return;
 		}
 

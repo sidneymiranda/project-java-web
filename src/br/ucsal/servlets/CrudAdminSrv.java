@@ -40,7 +40,8 @@ public class CrudAdminSrv extends HttpServlet {
 		
 		switch (action) {
 		case "create":
-			if(new UserDao().insert(new User(name,register,password,typeUser), listUsers)) {
+			if(new UserDao()
+					.insert(new User(name,register,password,typeUser), listUsers)) {
 				session.setAttribute("listUsers", listUsers);
 			}
 			res.sendRedirect("pages/profile/admin/users.jsp");
@@ -55,7 +56,8 @@ public class CrudAdminSrv extends HttpServlet {
 			String passwordOld = req.getParameter("passwordOld");
 			String newPassword = req.getParameter("newPassword");
 			
-			if(new UserDao().update(register, passwordOld, newPassword, listUsers)) {
+			if(new UserDao()
+					.update(register, passwordOld, newPassword, listUsers)) {
 				session.setAttribute("listUsers", listUsers);
 			}
 			
@@ -63,7 +65,8 @@ public class CrudAdminSrv extends HttpServlet {
 			break;
 		
 		case "delete":
-			if(new UserDao().remove(register, listUsers)) {
+			if(new UserDao()
+					.remove(register, listUsers)) {
 				session.setAttribute("listUsers", listUsers);
 			}
 			

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.ucsal.controller.UserDao;
 import br.ucsal.model.User;
 
 public class CreateUserSrv extends HttpServlet {
@@ -44,20 +45,18 @@ public class CreateUserSrv extends HttpServlet {
 
 			if (typeUser != null && name != null && register != null && password != null) {
 				if (password.equals(confirmPasswd)) {
-					listUsers.add(new User(name, register, password, typeUser));
-
-					session.setAttribute("listUsers", listUsers);
-
-					// IMPLEMENTAR UMA MSG DE SUCESSO NA CRIAÇÃO DO USUÁRIO ANTES DE REDIRECIONAR
-					if (typeUser.equals("admin")) {
-						res.sendRedirect("/ProjectJavaWebJSP/pages/profile/admin/users.jsp");
+					if(new UserDao()
+							.insert(new User(name, register, password, typeUser), listUsers)) {
+						
+						session.setAttribute("listUsers", listUsers);
 					}
-					res.sendRedirect("/ProjectJavaWebJSP/pages/login.jsp");
+					
+					res.sendRedirect("/VirtualBookcase/pages/login.jsp");
 					return;
 				}
 			}
-
-			res.sendRedirect("/ProjectJavaWebJSP/pages/registerUser/newUser.jsp");
+			
+			res.sendRedirect("/VirtualBookcase/pages/registerUser/newUser.jsp");
 			return;
 		} catch (IOException e) {
 			e.printStackTrace();

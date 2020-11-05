@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/img/favicon.ico"
 	type="image/x-icon" />
 
-<title>Perfil do usuário</title>
+<title>Perfil de Administrador</title>
 
 </head>
 

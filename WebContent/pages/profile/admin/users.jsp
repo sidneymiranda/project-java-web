@@ -33,7 +33,7 @@
 	<c:url value="/pages/profile/admin/users.jsp" var="users" />
 	<c:url value="/pages/profile/admin/viewUser.jsp" var="view" />
 	<c:url value="/pages/profile/admin/updateUser.jsp" var="update" />
-	<c:url value="/pages/profile/admin/delete.jsp" var="delete" />
+	<c:url value="/pages/profile/admin/deleteUser.jsp" var="delete" />
 	
 	
 	<jsp:include page="/includes/header.jsp" />
@@ -157,6 +157,7 @@
 	<script src="${pageContext.request.contextPath}/js/results.js"></script>
 </body>
 
+
 <!-- MODAL DE CADASTRO DE USUÁRIO-->
 		
 	<div class="modal fade" id="modalDados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,10 +182,10 @@
 							<label for="default">Padrão</label>
 						</div>
 
-						<input type="text" name="register" placeholder="MATRÍCULA" maxlength="10" required />
-						<input type="text" name="name" placeholder="NOME" required /> 
-						<input type="password" name="password" placeholder="SENHA" required /> 
-						<input type="password" name="confirmPassword"	placeholder="REPETIR A SENHA" required /> 
+						<input type="text" name="register" class="input" placeholder="MATRÍCULA" maxlength="10" required />
+						<input type="text" name="name" class="input" placeholder="NOME" required /> 
+						<input type="password" name="password" class="input" placeholder="SENHA" required /> 
+						<input type="password" name="confirmPassword" class="input"	placeholder="REPETIR A SENHA" required /> 
 						
 						<div class="modal-footer">
 						<input class="btn btn-white" data-dismiss="modal" value="CANCELAR" />
