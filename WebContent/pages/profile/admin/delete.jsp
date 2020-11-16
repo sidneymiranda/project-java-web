@@ -107,7 +107,7 @@
 			>
 			<a 
 				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp"
+				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp"
 			>
 				CANCELAR
 			</a>			

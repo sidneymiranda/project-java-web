@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/img/favicon.ico"
 	type="image/x-icon" />
 
-<title>Perfil do usuário</title>
+<title>Perfil de funcionário</title>
 
 </head>
 
@@ -214,7 +214,7 @@
 					data-target="#modalDados"
 					class="btn button-submit" 
 					type="submit" 
-					value="Cadastrar" 
+					value="Adicionar" 
 					id="newRegister">
 			</div>
 		</form>

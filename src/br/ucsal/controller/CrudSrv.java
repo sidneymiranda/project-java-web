@@ -1,4 +1,4 @@
-package br.ucsal.servlets;
+package br.ucsal.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.controller.BookDao;
-import br.ucsal.model.Book;
+import br.ucsal.dao.BookDao;
+import br.ucsal.model.BookModel;
 
 public class CrudSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,9 +27,9 @@ public class CrudSrv extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		List<Book> listBooks = (List<Book>) session.getAttribute("listBooks");
+		List<BookModel> listBooks = (List<BookModel>) session.getAttribute("listBooks");
 
-		listBooks = (listBooks == null) ? new ArrayList<Book>() : listBooks;
+		listBooks = (listBooks == null) ? new ArrayList<BookModel>() : listBooks;
 
 		String author = req.getParameter("author");
 		String title = req.getParameter("title");
@@ -38,20 +38,20 @@ public class CrudSrv extends HttpServlet {
 		String edition = req.getParameter("edition") == null ? "NÃO INFORMADO" : req.getParameter("edition");
 		String sinope = req.getParameter("sinope") == null ? "NÃO INFORMADO" : req.getParameter("sinopse");
 		String genre = req.getParameter("genre") == null ? "NÃO INFORMADO" : req.getParameter("genre");
-		String idioma = req.getParameter("idioma") == null ? "NÃO INFORMADO" : req.getParameter("idioma");
+		String idioma = req.getParameter("idioma") == null || req.getParameter("idioma") == "" ? "NÃO INFORMADO" : req.getParameter("idioma");
 
 		String action = req.getParameter("action");
-		
+		String profile = (String) session.getAttribute("profile");
 		switch (action) {
 
 		case "create":
-			if (new BookDao().insert(new Book(title.toUpperCase(), author.toUpperCase(), year,
+			if (new BookDao().insert(new BookModel(title.toUpperCase(), author.toUpperCase(), year,
 					isbn.toUpperCase(), edition, idioma.toUpperCase(), genre.toUpperCase(), sinope.toUpperCase()),
 					listBooks)) {
 
 				session.setAttribute("listBooks", listBooks);
 			};
-			res.sendRedirect("pages/profile/employee/home.jsp");
+			res.sendRedirect("pages/profile/"+profile+"/home.jsp");
 			break;
 
 		case "read":
@@ -63,13 +63,13 @@ public class CrudSrv extends HttpServlet {
 			if(new BookDao().update(isbn, author,edition, year, listBooks)) {
 				session.setAttribute("listBooks", listBooks);
 			}
-			res.sendRedirect("pages/profile/employee/home.jsp");
+			res.sendRedirect("pages/profile/"+profile+"/home.jsp");
 			break;
 
 		case "delete":
 			if (new BookDao().remove(isbn, listBooks)) {
 				session.setAttribute("listBooks", listBooks);
-				res.sendRedirect("pages/profile/employee/home.jsp");
+				res.sendRedirect("pages/profile/"+profile+"/home.jsp");
 			}
 			break;
 

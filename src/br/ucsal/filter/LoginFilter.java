@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(urlPatterns = {"/pages/profile/*"})
-public class AuthenticatorFilter implements Filter {
+public class LoginFilter implements Filter {
 
-	public AuthenticatorFilter() {
+	public LoginFilter() {
 	}
 
 	public void destroy() {
@@ -29,12 +29,13 @@ public class AuthenticatorFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		
-//		boolean user = (Boolean) session.getAttribute("authenticated") == null ? false : (Boolean) session.getAttribute("authenticated");
+		request.setCharacterEncoding("UTF-8");
+	    response.setContentType("text/html; charset=UTF-8");
 		
 		if (session.getAttribute("userLogado") == null) {
 			res.sendRedirect("/VirtualBookcase/pages/login.jsp");
 			return;
-		}
+		} 
 
 		chain.doFilter(request, response);
 	}

@@ -1,6 +1,6 @@
 package br.ucsal.model;
 
-public class Book {
+public class BookModel {
 	private String title;
 	private String author;
 	private String year;
@@ -10,10 +10,10 @@ public class Book {
 	private String genre;
 	private String sinopse;
 	
-	public Book() {
+	public BookModel() {
 	}
 	
-	public Book(String title, String author, String year, String isbn, String edition, String idioma,
+	public BookModel(String title, String author, String year, String isbn, String edition, String idioma,
 			String genre, String sinopse) {
 		this.title = title;
 		this.author = author;

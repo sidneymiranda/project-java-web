@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" />
+<meta name="author" content="Sidney Miranda"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/globals.css" />
@@ -18,7 +19,7 @@
 	type="image/x-icon" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-<title>Perfil do usu·rio</title>
+<title>Perfil do usu√°rio</title>
 </head>
 <body>
 	<jsp:include page="/includes/header.jsp" />
@@ -31,16 +32,17 @@
 		</form>
 	</section>
 	
-	<section>
-		
-		<table class="table table-hover table-sm">
+	<hr>
+	
+	<section>		
+		<table class="table table-hover table-sm mt-5">
 				<thead class="thead-ligth">
 					<tr>
-						<th scope="col">TÕTULO</th>
+						<th scope="col">T√çTULO</th>
 						<th scope="col">AUTOR</th>
-						<th scope="col">ANO DE PUBLICA«√O</th>
+						<th scope="col">ANO DE PUBLICA√á√ÉO</th>
 						<th scope="col">ISBN</th>
-						<th scope="col">EDI«√O</th>
+						<th scope="col">EDI√á√ÉO</th>
 					</tr>
 				</thead>
 				 <tbody>					 

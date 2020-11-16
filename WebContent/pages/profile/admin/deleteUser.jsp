@@ -10,7 +10,7 @@
 <title>Configuração de usuários</title>
 </head>
 <body>
-<h1>Tem certeza que deseja romover este usuário?</h1>
+<h1>Tem certeza que deseja remover este usuário?</h1>
 <form class="form" action="${pageContext.request.contextPath}/crudAdmin?action=${param.action}" method="post">
 	<label>Nome</label>
 	<input 
@@ -33,6 +33,19 @@
 		class="input"
 		value="${param.typeUser}"
 	>
+	<div class="buttons">
+			<input
+				class="btn button-remove" 
+				type="submit" 
+				value="REMOVER"
+			>
+			<a 
+				class="btn button-cancel"
+				href="${pageContext.request.contextPath}/pages/profile/admin/users.jsp"
+			>
+				CANCELAR
+			</a>			
+		</div>
 </form>
 </body>
 </html>

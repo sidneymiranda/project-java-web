@@ -80,7 +80,7 @@
 					type="text" 
 					id="idioma"
 					name="idioma"
-					value="${param.idioma}" 
+					value="${param.idioma == ''? 'NÃO INFORMADO' : param.idioma}" 
 					readonly
 				>
 				<input 
@@ -88,7 +88,7 @@
 					type="text" 
 					id="genre"
 					name="genre"
-					value="${param.genre}" 
+					value="${param.genre == ''? 'NÃO INFORMADO' : param.genre}" 
 					readonly
 				>
 			</div>
@@ -99,7 +99,7 @@
 			id="sinopse"
 			name="sinopse" 
 			readonly
-		>${param.sinopse}</textarea>
+		>${param.sinopse == ''? 'NÃO INFORMADO' : param.sinopse}</textarea>
 		
 		<div class="buttons">
 			<input

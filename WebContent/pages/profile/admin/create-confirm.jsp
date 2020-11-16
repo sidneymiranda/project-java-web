@@ -1,20 +1,23 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>DeleÃ§Ã£o de dados</title>
+<title>Confirmação de dados</title>
 </head>
 <body>
-
-	<h1 class="title-confirm">Tem certeza que deseja remover este cadastro?</h1>	
+	<c:url value="crud" var="servlet" />
+	<c:url value="create" var="action" />
 	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
-		<label for="title">TÃ­tulo</label>
+	<h1 class="title-confirm">Verifique os dados antes de confirmar</h1>
+
+	<form class="form" method="post" action="${pageContext.request.contextPath}/${servlet}?action=${action}">
+		<label for="title">Título</label>
 		<input 
 			type="text" 
 			class="input"
@@ -35,9 +38,9 @@
 		
 		<div class="content-div">
 			<div class="content-div-label">
-				<label class="grow" for="year">Ano da PublicaÃ§Ã£o</label>
+				<label class="grow" for="year">Ano da Publicação</label>
 				<label class="grow" for="isbn">ISBN</label>
-				<label class="grow"	for="edition">EdiÃ§Ã£o</label>
+				<label class="grow"	for="edition">Edição</label>
 			</div>
 			<div class="content-div-input">
 				<input 
@@ -58,7 +61,7 @@
 				>
 				<input 
 					class="input grow" 
-					type="text" 
+					type="number" 
 					id="edition"
 					name="edition"
 					value="${param.edition}" 
@@ -69,7 +72,7 @@
 		<div class="content-div">
 			<div class="content-div-label">
 				<label class="grow" for="idioma">Idioma</label>
-				<label class="grow"	for="genre">GÃªnero</label>
+				<label class="grow"	for="genre">Gênero</label>
 			</div>
 			<div class="content-div-label">
 				<input 
@@ -95,22 +98,16 @@
 		<textarea 
 			id="sinopse"
 			name="sinopse" 
-			class="input"
 			readonly
 		>${param.sinopse}</textarea>
 		
 		<div class="buttons">
 			<input
-				class="btn button-remove" 
+				class="btn button-submit" 
 				type="submit" 
-				value="REMOVER"
-			>
-			<a 
-				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp"
-			>
-				CANCELAR
-			</a>			
+				value="CONFIRMAR"
+			>			
+		<a href="home.jsp" class="btn button-cancel">CANCELAR</a>
 		</div>
 	</form>
 

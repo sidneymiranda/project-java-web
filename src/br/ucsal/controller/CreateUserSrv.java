@@ -1,4 +1,4 @@
-package br.ucsal.servlets;
+package br.ucsal.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.controller.UserDao;
-import br.ucsal.model.User;
+import br.ucsal.dao.UserDao;
+import br.ucsal.model.UserModel;
 
 public class CreateUserSrv extends HttpServlet {
 	private static final long serialVersionUID = -3470928178875222284L;
@@ -28,9 +28,9 @@ public class CreateUserSrv extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		List<User> listUsers = (List<User>) session.getAttribute("listUsers");
+		List<UserModel> listUsers = (List<UserModel>) session.getAttribute("listUsers");
 
-		listUsers = (listUsers == null) ? new ArrayList<User>() : listUsers;
+		listUsers = (listUsers == null) ? new ArrayList<UserModel>() : listUsers;
 
 		String register = req.getParameter("register");
 		String name = req.getParameter("name");
@@ -40,13 +40,13 @@ public class CreateUserSrv extends HttpServlet {
 
 		try {
 			if (listUsers.isEmpty()) {
-				session.setAttribute("listUsers", listUsers.add(new User("admin", "0000", "admin", "admin")));
+				session.setAttribute("listUsers", listUsers.add(new UserModel("admin", "0000", "admin", "admin")));
 			}
 
 			if (typeUser != null && name != null && register != null && password != null) {
 				if (password.equals(confirmPasswd)) {
 					if(new UserDao()
-							.insert(new User(name, register, password, typeUser), listUsers)) {
+							.insert(new UserModel(name, register, password, typeUser), listUsers)) {
 						
 						session.setAttribute("listUsers", listUsers);
 					}

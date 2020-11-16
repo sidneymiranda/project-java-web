@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>Deleção de dados</title>
+<title>Perfil de Administrador</title>
 </head>
 <body>
 
-	<h1 class="title-confirm">Tem certeza que deseja remover este cadastro?</h1>	
+	<h1 class="title-confirm">Livro selecionado</h1>	
 	
-	<form class="form" method="post" action="${pageContext.request.contextPath}/crud?action=${param.action}">
+	<form class="form" method="" action="">
 		<label for="title">Título</label>
 		<input 
 			type="text" 
@@ -94,25 +94,19 @@
 			for="sinopse">Sinopse</label>
 		<textarea 
 			id="sinopse"
-			name="sinopse" 
+			name="sinopse"
 			class="input"
 			readonly
 		>${param.sinopse}</textarea>
 		
 		<div class="buttons">
-			<input
-				class="btn button-remove" 
-				type="submit" 
-				value="REMOVER"
-			>
 			<a 
 				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/employee/home.jsp"
+				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp"
 			>
-				CANCELAR
+				VOLTAR
 			</a>			
 		</div>
 	</form>
-
 </body>
 </html>

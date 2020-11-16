@@ -29,11 +29,10 @@
 	<c:url value="/crud" var="crud" />
 	<c:url value="/pages/profile/admin/home.jsp" var="home" />
 	<c:url value="/pages/profile/admin/users.jsp" var="users" />
-	<c:url value="/pages/profile/employee/read.jsp" var="read" />
-	<c:url value="/pages/profile/employee/update.jsp" var="update" />
-	<c:url value="/pages/profile/employee/delete.jsp" var="delete" />
-	
-	
+	<c:url value="/pages/profile/admin/read.jsp" var="read" />
+	<c:url value="/pages/profile/admin/update.jsp" var="update" />
+	<c:url value="/pages/profile/admin/delete.jsp" var="delete" />
+		
 	<jsp:include page="/includes/header.jsp" />
 	
 	<nav class="sidebar">
@@ -166,14 +165,14 @@
 	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Verifique os dados antes de confirmar</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">Novo registro</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
 	      <div class="modal-body">
 	        
-	        <form class="form" name="register-book" action="create-confirm.jsp?action=create"	method="post">
+	        <form class="form" name="register-book" action="create-confirm.jsp?action=create" autofocus method="post">
 						<label for="title">Título</label>
 						<input type="text" name="title" class="input" autocomplete="off" required>
 						

@@ -1,4 +1,4 @@
-package br.ucsal.servlets;
+package br.ucsal.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.controller.UserDao;
-import br.ucsal.model.User;
+import br.ucsal.dao.UserDao;
+import br.ucsal.model.UserModel;
 
 public class CrudAdminSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,12 +28,12 @@ public class CrudAdminSrv extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		List<User> listUsers = (List<User>) session.getAttribute("listUsers");
+		List<UserModel> listUsers = (List<UserModel>) session.getAttribute("listUsers");
 
 		String register = req.getParameter("register");
 		String name = req.getParameter("name");
 		String password = req.getParameter("password");
-		String confirmPasswd = req.getParameter("confirmPassword");
+//		String confirmPasswd = req.getParameter("confirmPassword");
 		String typeUser = req.getParameter("typeUser");
 		
 		String action = req.getParameter("action");
@@ -41,7 +41,7 @@ public class CrudAdminSrv extends HttpServlet {
 		switch (action) {
 		case "create":
 			if(new UserDao()
-					.insert(new User(name,register,password,typeUser), listUsers)) {
+					.insert(new UserModel(name,register,password,typeUser), listUsers)) {
 				session.setAttribute("listUsers", listUsers);
 			}
 			res.sendRedirect("pages/profile/admin/users.jsp");

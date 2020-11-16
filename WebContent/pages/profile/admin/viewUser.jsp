@@ -33,6 +33,14 @@
 		class="input"
 		value="${param.typeUser}"
 	>
+	<div class="buttons">
+			<a 
+				class="btn button-cancel"
+				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp"
+			>
+				VOLTAR
+			</a>			
+		</div>
 </form>
 </body>
 </html>

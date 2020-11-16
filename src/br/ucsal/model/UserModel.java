@@ -2,17 +2,17 @@ package br.ucsal.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class UserModel implements Serializable {
 	private static final long serialVersionUID = 1197854600440771580L;
 	private String name;
 	private String register;
 	private String password;
 	private String typeUser;
 
-	public User() {
+	public UserModel() {
 		
 	}
-	public User(String name, String register, String password, String typeUser) {
+	public UserModel(String name, String register, String password, String typeUser) {
 		this.name = name;
 		this.register = register;
 		this.password = password;
