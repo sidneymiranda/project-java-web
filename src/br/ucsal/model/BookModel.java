@@ -1,6 +1,11 @@
 package br.ucsal.model;
 
-public class BookModel {
+import java.io.Serializable;
+
+public class BookModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private String title;
 	private String author;
 	private String year;

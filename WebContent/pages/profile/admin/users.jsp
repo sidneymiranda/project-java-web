@@ -29,6 +29,7 @@
 
 <body class="grid grid-template">
 	<c:url value="/crud" var="crud" />
+	
 	<c:url value="/pages/profile/admin/home.jsp" var="home" />
 	<c:url value="/pages/profile/admin/users.jsp" var="users" />
 	<c:url value="/pages/profile/admin/viewUser.jsp" var="view" />
@@ -67,32 +68,6 @@
 </nav>
 		
 	<section class="content">
-<!-- 		<form id="form-query" class="form-query" action="" method="post">
-			<label 
-				for="label-query" 
-				class="label-query">
-					Localizar usuário:
-			</label>
-			<input 
-				name="query" 
-				type="text" 
-				id="input-query" 
-				autofocus
-				class="input-query"
-			>
-			<input 
-				type="reset"
-				id="reset-form-query" 
-				value="Limpar" 
-				class="btn btn-secondary"
-			>
-			<input 
-				type="submit" 
-				id="submit-form-query" 
-				value="Buscar"
-				class="btn btn-success"
-			>
-		</form> -->
 		
 		<h1 id="titleUser">Lista de usuários</h1>
  		<input
@@ -104,39 +79,37 @@
 			id="newRegister"
 		>
 		
-		<hr>
-		
-		<section>			
+		<section class="mt-5">			
 			<table class="table table-hover table-sm">
 				<thead class="thead-ligth">
 					<tr>
 						<th scope="col">NOME</th>
 						<th scope="col">MATRÍCULA</th>
 						<th scope="col">PERFIL</th>
-						<th scope="col">CONTROLE</th>
+						<th scope="col">AÇÕES</th>
 					</tr>
 				</thead>
 				 <tbody>					 
 					 <c:forEach items="${listUsers}" var="user">
-							<tr>
+							<tr scope="row">
 								<td><c:out value="${user.name}" /></td>
 								<td><c:out value="${user.register}" /></td>
-								<td><c:out value="${user.typeUser}" /></td>
+								<td><c:out value="${user.typeUser == 'employee' ? 'funcionário' : user.typeUser == 'default' ? 'estudante' : 'administrador'}" /></td>
 								<td>
-									<a href="${view}?action=read?name=${user.name}?register=${user.register}?typeUser=${user.typeUser}"
-									class="btn btn-primary" data-toggle="modal" data-target="#view">
+									<a href="${view}?action=read&name=${user.name}&register=${user.register}&typeUser=${user.typeUser}"
+									class="btn btn-primary">
 										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="white" xmlns="http://www.w3.org/2000/svg">
 										  <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
 										  <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
 										</svg>
 									</a>									
-									<a href="${update}?action=update&name=${user.name}?register=${user.register}?typeUser=${user.typeUser}"
+									<a href="${update}?action=update&name=${user.name}&register=${user.register}&typeUser=${user.typeUser}"
 									class="btn btn-warning">
 										<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="black">
   									<path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
 										</svg>
 									</a>									
-									<a href="${delete}?action=delete&name=${user.name}?register=${user.register}?typeUser=${user.typeUser}" 
+									<a href="${delete}?action=delete&name=${user.name}&register=${user.register}&typeUser=${user.typeUser}" 
 									class="btn btn-danger">
 										<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="white">
 										  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -179,7 +152,7 @@
 							<input type="radio" name="typeUser" id="employee" value="employee" required />
 							<label for="default">Funcionário</label> 
 							<input type="radio" name="typeUser" id="user" value="user" required />
-							<label for="default">Padrão</label>
+							<label for="default">Estudante</label>
 						</div>
 
 						<input type="text" name="register" class="input" placeholder="MATRÍCULA" maxlength="10" required />

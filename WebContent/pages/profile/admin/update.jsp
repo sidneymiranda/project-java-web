@@ -41,14 +41,14 @@
 			</div>
 			<div class="content-div-input">
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="year"
 					name="year" 
 					value="${param.year}"
 				>
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="isbn"
 					name="isbn"
@@ -56,7 +56,7 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="edition"
 					name="edition"
@@ -71,7 +71,7 @@
 			</div>
 			<div class="content-div-label">
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="idioma"
 					name="idioma"
@@ -79,7 +79,7 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow" 
 					type="text" 
 					id="genre"
 					name="genre"
@@ -93,6 +93,7 @@
 		<textarea 
 			id="sinopse"
 			name="sinopse"
+			class="input"
 		>${param.sinopse != '' ? param.sinopse : 'NÃO INFORMADO'}</textarea>
 		
 		<div class="buttons">

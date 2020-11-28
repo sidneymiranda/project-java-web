@@ -7,10 +7,18 @@
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/img/favicon.ico"
+	type="image/x-icon" />
 <title>Configuração de usuários</title>
 </head>
-<body>
-<h1>Registro</h1>
+<body class="container">
+<h1>Registro do usuário selecionado</h1>
 <form class="form" action="${pageContext.request.contextPath}/crudAdmin?action=${param.action}" method="post">
 	<label>Nome</label>
 	<input 
@@ -18,6 +26,7 @@
 		name="name"
 		class="input" 
 		value="${param.name}"
+		readonly
 	>
 	<label>Matrícula</label>
 	<input 
@@ -25,6 +34,7 @@
 		name="register"
 		class="input" 
 		value="${param.register}"
+		readonly
 	>
 	<label>Perfil de acesso</label>
 	<input 
@@ -32,11 +42,20 @@
 		name="typeUser"
 		class="input"
 		value="${param.typeUser}"
+		readonly
+	>
+	<label>Data do cadastro</label>
+	<input 
+		type="text" 
+		name="typeUser"
+		class="input"
+		value="${param.date}"
+		readonly
 	>
 	<div class="buttons">
 			<a 
 				class="btn button-cancel"
-				href="${pageContext.request.contextPath}/pages/profile/admin/home.jsp"
+				href="${pageContext.request.contextPath}/pages/profile/admin/users.jsp"
 			>
 				VOLTAR
 			</a>			

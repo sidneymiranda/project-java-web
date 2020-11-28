@@ -25,9 +25,9 @@
 			<section class="form-register">
 				<h1>Crie o seu acesso</h1>
 
-				<form action="${pageContext.request.contextPath}/createUser" method="post" id="formRegister">
+				<form action="${pageContext.request.contextPath}/newUser" method="post" id="formRegister">
 					<fieldset>
-						<input type="text" name="register" placeholder="MATRÍCULA" maxlength="10" required />
+						<input type="text" name="register" placeholder="MATRÍCULA" maxlength="10" autofocus required />
 						<input type="text" name="name" placeholder="NOME" required /> 
 						<input type="password" name="password" placeholder="SENHA" required /> 
 						<input type="password" name="confirmPassword"	placeholder="REPETIR A SENHA" required /> 

@@ -1,8 +1,6 @@
 package br.ucsal.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,57 +18,60 @@ public class CrudSrv extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException {
 	}
 
-	@SuppressWarnings("unchecked")
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		List<BookModel> listBooks = (List<BookModel>) session.getAttribute("listBooks");
 
-		listBooks = (listBooks == null) ? new ArrayList<BookModel>() : listBooks;
-
-		String author = req.getParameter("author");
-		String title = req.getParameter("title");
+		String author = req.getParameter("author").toUpperCase();
+		String title = req.getParameter("title").toUpperCase();
 		String year = req.getParameter("year");
-		String isbn = req.getParameter("isbn");
-		String edition = req.getParameter("edition") == null ? "NﾃO INFORMADO" : req.getParameter("edition");
-		String sinope = req.getParameter("sinope") == null ? "NﾃO INFORMADO" : req.getParameter("sinopse");
-		String genre = req.getParameter("genre") == null ? "NﾃO INFORMADO" : req.getParameter("genre");
-		String idioma = req.getParameter("idioma") == null || req.getParameter("idioma") == "" ? "NﾃO INFORMADO" : req.getParameter("idioma");
+		String isbn = req.getParameter("isbn").toUpperCase();
+		String edition = req.getParameter("edition") == "" ? "Nﾃグ INFORMADO" : req.getParameter("edition");
+		String sinope = req.getParameter("sinope") == "" ? "Nﾃグ INFORMADO" : req.getParameter("sinopse").toUpperCase();
+		String genre = req.getParameter("genre") == "" ? "Nﾃグ INFORMADO" : req.getParameter("genre").toUpperCase();
+		String idioma = req.getParameter("idioma") == "" ? "Nﾃグ INFORMADO" : req.getParameter("idioma").toUpperCase();
 
 		String action = req.getParameter("action");
 		String profile = (String) session.getAttribute("profile");
+		
+		BookModel newBook = new BookModel(title, author, year, isbn, edition, idioma, genre, sinope);
+
 		switch (action) {
 
 		case "create":
-			if (new BookDao().insert(new BookModel(title.toUpperCase(), author.toUpperCase(), year,
-					isbn.toUpperCase(), edition, idioma.toUpperCase(), genre.toUpperCase(), sinope.toUpperCase()),
-					listBooks)) {
+			if (new BookDao().insert(newBook, session)) {
 
-				session.setAttribute("listBooks", listBooks);
-			};
-			res.sendRedirect("pages/profile/"+profile+"/home.jsp");
+				// setar uma msg de sucesso e emitir um alert na home
+			}
+
+			res.sendRedirect("pages/profile/" + profile + "/home.jsp");
 			break;
 
-		case "read":
-			new BookDao().toList();
+		case "find":
+			String query = req.getParameter("query");
+			
+			new BookDao().find(query);
 
 			break;
 
 		case "update":
-			if(new BookDao().update(isbn, author,edition, year, listBooks)) {
-				session.setAttribute("listBooks", listBooks);
+			if (new BookDao().update(newBook, session)) {
+				// setar uma msg de atualizado com sucesso e emitir um alert na home
 			}
-			res.sendRedirect("pages/profile/"+profile+"/home.jsp");
+
+			res.sendRedirect("pages/profile/" + profile + "/home.jsp");
 			break;
 
 		case "delete":
-			if (new BookDao().remove(isbn, listBooks)) {
-				session.setAttribute("listBooks", listBooks);
-				res.sendRedirect("pages/profile/"+profile+"/home.jsp");
+			if (new BookDao().remove(newBook, session)) {
+				// setar uma msg de atualizado com sucesso e emitir um alert na home
 			}
+			res.sendRedirect("pages/profile/" + profile + "/home.jsp");
 			break;
 
 		default:
