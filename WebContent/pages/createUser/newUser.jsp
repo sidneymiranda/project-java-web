@@ -15,6 +15,7 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+
 <title>Cadastro de usuário</title>
 
 </head>
@@ -25,14 +26,14 @@
 			<section class="form-register">
 				<h1>Crie o seu acesso</h1>
 
-				<form action="${pageContext.request.contextPath}/newUser" method="post" id="formRegister">
+				<form action="${pageContext.request.contextPath}/newUser?action=insert" method="post" id="formRegister">
 					<fieldset>
-						<input type="text" name="register" placeholder="MATRÍCULA" maxlength="10" autofocus required />
+						<input type="text" name="register" placeholder="MATRÍCULA" maxlength="10" autofocus required onblur="check()" />
 						<input type="text" name="name" placeholder="NOME" required /> 
 						<input type="password" name="password" placeholder="SENHA" required /> 
 						<input type="password" name="confirmPassword"	placeholder="REPETIR A SENHA" required /> 
 						
-						<input class="button button-success" type="submit" id="register" value="CADASTRAR" />
+						<input class="button button-success" type="submit" id="register" value="CADASTRAR" disabled />
 					</fieldset>
 				</form>
 			</section>
@@ -59,5 +60,7 @@
 			</div>
 		</section>
 	</section>
+	
+	<script src="${pageContext.request.contextPath}/js/exist.js"></script>
 </body>
 </html>

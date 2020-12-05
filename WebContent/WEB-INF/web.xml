@@ -12,6 +12,7 @@
 		<servlet-name>authenticator</servlet-name>
 		<servlet-class>br.ucsal.controller.AuthenticatorSrv</servlet-class>
 	</servlet>
+	
 	<servlet>
 		<servlet-name>newUser</servlet-name>
 		<servlet-class>br.ucsal.controller.NewUserSrv</servlet-class>
@@ -30,6 +31,7 @@
 		<servlet-name>authenticator</servlet-name>
 		<url-pattern>/authenticator</url-pattern>
 	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>newUser</servlet-name>
 		<url-pattern>/newUser</url-pattern>

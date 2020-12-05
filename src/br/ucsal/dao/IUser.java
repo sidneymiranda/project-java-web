@@ -4,18 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.model.UserModel;
+import br.ucsal.model.User;
 
 public interface IUser {
 	
 	
-	public void insert(UserModel user, HttpSession session);
+	public void insert(User user, HttpSession session);
 	
-	public List<UserModel> toList();
+	public List<User> toList();
 	
-	public boolean update(UserModel user, HttpSession session);
+	public boolean update(User user, HttpSession session);
 	
-	public void remove(UserModel userModel, HttpSession session);
+	public void remove(User user, HttpSession session);
 	
 	public boolean exists(String register, String password, HttpSession session);
 }

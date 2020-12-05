@@ -1,0 +1,6 @@
+projectKey=test-sonar-virtual_bookcase
+serverUrl=http://localhost:9000
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9000/dashboard?id=test-sonar-virtual_bookcase
+ceTaskId=AXYTD1_96Zn00pJ8ygD-
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXYTD1_96Zn00pJ8ygD-

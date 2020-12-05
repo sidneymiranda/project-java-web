@@ -4,17 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.model.BookModel;
+import br.ucsal.model.Book;
 
 public interface IBook {
 
-	public boolean insert(BookModel bookModel, HttpSession session);
+	public boolean insert(Book book, HttpSession session);
 	
-	public List<BookModel> find(String parametro);
+	public List<Book> find(String parametro);
 	
-	public boolean update(BookModel bookModel, HttpSession session);
+	public boolean update(Book book, HttpSession session);
 	
-	public boolean remove(BookModel bookModel, HttpSession session);
+	public boolean remove(Book book, HttpSession session);
 	
 	
 }

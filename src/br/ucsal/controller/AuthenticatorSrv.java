@@ -27,12 +27,12 @@ public class AuthenticatorSrv extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		UserDao user = new UserDao();
 		
 		String registry = req.getParameter("registry");
 		String password = req.getParameter("password");
+		UserDao userDao = new UserDao();
 
-		if (user.exists(registry, password, session)) {
+		if (userDao.exists(registry, password, session)) {
 			String profile = (String) session.getAttribute("profile");
 
 			res.sendRedirect("/VirtualBookcase/pages/profile/" + profile + "/home.jsp");

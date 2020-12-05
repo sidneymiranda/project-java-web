@@ -1,25 +1,29 @@
 package br.ucsal.dao;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.model.UserModel;
+import br.ucsal.model.User;
 
+@SuppressWarnings("unchecked")
 public class UserDao implements IUser {
-	private static final UserModel ADMIN = new UserModel("admin", "admin", "admin", "admin");
+	private static final User ADMIN = new User("admin", "admin", "admin", "admin");
 	private static boolean response = false;
-	private static List<UserModel> listUsers;
+	private static List<User> listUsers;
 
-	@SuppressWarnings("unchecked")
+	private List<User> getUsers(HttpSession session) {
+		listUsers = (List<User>) session.getAttribute("listUsers") == null ? new ArrayList<>()
+				: (List<User>) session.getAttribute("listUsers");
+
+		return listUsers;
+	}
+
 	@Override
-	public void insert(UserModel user, HttpSession session) {
+	public void insert(User user, HttpSession session) {
 		try {
-			listUsers = (List<UserModel>) session.getAttribute("listUsers") == null ? new ArrayList<UserModel>()
-					: listUsers;
-
+			listUsers = getUsers(session);
 			if (listUsers.isEmpty()) {
 				listUsers.add(ADMIN);
 			}
@@ -33,23 +37,25 @@ public class UserDao implements IUser {
 	}
 
 	@Override
-	public List<UserModel> toList() {
+	public List<User> toList() {
 		return null;
 	}
 
 	@Override
-	public boolean update(UserModel userModel, HttpSession session) {
-
+	public boolean update(User user, HttpSession session) {
+		listUsers = getUsers(session);
 		try {
-			listUsers.forEach(user -> {
-				if (user.getRegister().equals(userModel.getRegister())) {
-					user.setName(userModel.getName());
-					user.setTypeUser(userModel.getTypeUser());
+			if (!listUsers.isEmpty()) {
+				listUsers.forEach(u -> {
+					if (u.getRegister().equals(user.getRegister())) {
+						u.setName(user.getName());
+						u.setTypeUser(user.getTypeUser());
 
-					session.setAttribute("listUsers", listUsers);
-				}
-			});
-			return true;
+						session.setAttribute("listUsers", listUsers);
+					}
+				});
+				return true;
+			}
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
@@ -57,22 +63,24 @@ public class UserDao implements IUser {
 	}
 
 	@Override
-	public void remove(UserModel userModel, HttpSession session) {
-
-		listUsers.forEach(user -> {
-			if (user.getRegister().equals(userModel.getRegister())) {
-				listUsers.remove(user);
-			}
-		});
+	public void remove(User user, HttpSession session) {
+		listUsers = getUsers(session);
+		if (!listUsers.isEmpty()) {
+			listUsers.forEach(u -> {
+				if (u.getRegister().equals(user.getRegister())) {
+					listUsers.remove(u);
+				}
+			});
+		}
 	}
 
-	@Override
 	public boolean exists(String register, String password, HttpSession session) {
+		listUsers = getUsers(session);
 
-		if (listUsers != null) {
+		if (!listUsers.isEmpty() && listUsers != null) {
 			listUsers.forEach(user -> {
-				if (user.getRegister().equals(register) && user.getPassword().equals(password)) {
-
+				if (user.getRegister() != null && user.getPassword() != null && user.getRegister().equals(register)
+						&& user.getPassword().equals(password)) {
 					session.setAttribute("userLogado", user.getName());
 					session.setAttribute("profile", user.getTypeUser());
 					response = true;
@@ -82,4 +90,15 @@ public class UserDao implements IUser {
 		return response;
 	}
 
+	public boolean logged(HttpSession session) {
+		boolean logged = false;
+		String user = (String) session.getAttribute("userLogado");
+		
+		if(user != null) {
+			
+		}
+		
+		return true;
+	}
+	
 }

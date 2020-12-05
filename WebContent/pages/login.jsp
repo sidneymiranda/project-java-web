@@ -12,7 +12,6 @@
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-	<!-- href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" /> -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" />
 
@@ -40,7 +39,7 @@
 				<div class="form-login-input">
 					<h1>LOGIN</h1>
 
-					<form action="${pageContext.request.contextPath}/authenticator" method="post" id="formLogin">
+					<form action="${pageContext.request.contextPath}/login" method="post" id="formLogin">
 						<fieldset>
 							<input 
 								type="text" 

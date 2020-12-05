@@ -5,20 +5,20 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import br.ucsal.model.BookModel;
+import br.ucsal.model.Book;
 
 public class BookDao implements IBook {
-	private static List<BookModel> listBooks;
+	private static List<Book> listBooks;
+	private static boolean response = false;
 
 	@Override
 	@SuppressWarnings({ "unchecked", "finally" })
-	public boolean insert(BookModel bookModel, HttpSession session) {
-		boolean response = false;
+	public boolean insert(Book book, HttpSession session) {
 		try {
-			listBooks = (List<BookModel>) session.getAttribute("listBooks") == null 
-					? new ArrayList<BookModel>()
+			listBooks = (List<Book>) session.getAttribute("listBooks") == null 
+					? new ArrayList<Book>()
 					: listBooks;
-			listBooks.add(bookModel);
+			listBooks.add(book);
 
 			session.setAttribute("listBooks", listBooks);
 
@@ -32,23 +32,21 @@ public class BookDao implements IBook {
 
 	@SuppressWarnings("unlikely-arg-type")
 	@Override
-	public List<BookModel> find(String param) {
-		ArrayList<BookModel> emptyList = new ArrayList<>();
+	public List<Book> find(String param) {
+		ArrayList<Book> emptyList = new ArrayList<>();
 		
 		return listBooks.contains(param) ? listBooks : emptyList;
 	}
 
 	@SuppressWarnings("finally")
-	public boolean update(BookModel bookModel, HttpSession session) {
-		boolean response = false;
-
+	public boolean update(Book book, HttpSession session) {
 		try {
 
-			listBooks.forEach(book -> {
-				if (book.getIsbn().equals(bookModel.getIsbn())) {
-					book.setAuthor(bookModel.getAuthor());
-					book.setEdition(bookModel.getEdition());
-					book.setYear(bookModel.getYear());
+			listBooks.forEach(b -> {
+				if (b.getIsbn().equals(book.getIsbn())) {
+					b.setAuthor(book.getAuthor());
+					b.setEdition(book.getEdition());
+					b.setYear(book.getYear());
 
 					session.setAttribute("listBooks", listBooks);
 
@@ -64,12 +62,11 @@ public class BookDao implements IBook {
 
 	@SuppressWarnings("finally")
 	@Override
-	public boolean remove(BookModel bookModel, HttpSession session) {
-
+	public boolean remove(Book book, HttpSession session) {
 		try {
-			listBooks.forEach(book -> {
-				if (book.getIsbn().equals(bookModel.getIsbn())) {
-					listBooks.remove(book);
+			listBooks.forEach(b -> {
+				if (b.getIsbn().equals(book.getIsbn())) {
+					listBooks.remove(b);
 					session.setAttribute("listBooks", listBooks);
 
 				}

@@ -35,7 +35,7 @@
 	<hr>
 	
 	<section>		
-		<table class="table table-hover table-sm mt-5">
+		<table class="table table-hover table mt-5">
 				<thead class="thead-ligth">
 					<tr>
 						<th scope="col">TÍTULO</th>

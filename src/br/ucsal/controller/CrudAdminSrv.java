@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.ucsal.dao.UserDao;
-import br.ucsal.model.UserModel;
+import br.ucsal.model.User;
 
 public class CrudAdminSrv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,6 @@ public class CrudAdminSrv extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
-
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) 
@@ -36,7 +35,7 @@ public class CrudAdminSrv extends HttpServlet {
 		String action = req.getParameter("action");
 		LocalDate date = LocalDate.now();
 		
-		UserModel user = new UserModel(name, register, password, typeUser);
+		User user = new User(name, register, password, typeUser);
 
 		switch (action) {
 		
