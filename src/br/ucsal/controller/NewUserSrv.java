@@ -29,22 +29,9 @@ public class NewUserSrv extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		String action = req.getParameter("action");
-
 		switch (action) {
 		case "validar":
-			String param = req.getParameter("register");
-			String msg = "Matrícula informada já existe no banco de dados!";
-
-			if (new UserDao2().validate(param)) {
-				msg = "Usuário liberado para cadastro!";
-			}
 			
-			PrintWriter pr = res.getWriter();
-			res.setContentType("text/xml");
-			pr.println("<response>");
-			pr.println("<result>" + msg + "</result>");
-			pr.println("</response>");
-			pr.close();
 			break;
 		
 		case "insert":
@@ -53,12 +40,9 @@ public class NewUserSrv extends HttpServlet {
 			String password = req.getParameter("password");
 
 			User user = new User(name, register, password);
-			try {
-				new UserDao().insert(user, session);
-				res.sendRedirect("pages/login.jsp");
-			} catch (IOException e) {
-				throw new IOException(e);
-			}
+			new UserDao().insert(user, session);
+//			new UserDao2().insert(user);
+			res.sendRedirect("pages/login.jsp");
 			break;
 		default:
 			break;

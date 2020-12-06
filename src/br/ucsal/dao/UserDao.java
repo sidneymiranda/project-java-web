@@ -9,9 +9,19 @@ import br.ucsal.model.User;
 
 @SuppressWarnings("unchecked")
 public class UserDao implements IUser {
-	private static final User ADMIN = new User("admin", "admin", "admin", "admin");
 	private static boolean response = false;
 	private static List<User> listUsers;
+	
+	
+	private static User addAdmin() {
+		User admin = new User();
+		admin.setName("admin");
+		admin.setPassword("admin");
+		admin.setRegister("admin");
+		admin.setTypeUser("admin");
+		
+		return admin;
+	}
 
 	private List<User> getUsers(HttpSession session) {
 		listUsers = (List<User>) session.getAttribute("listUsers") == null ? new ArrayList<>()
@@ -25,7 +35,7 @@ public class UserDao implements IUser {
 		try {
 			listUsers = getUsers(session);
 			if (listUsers.isEmpty()) {
-				listUsers.add(ADMIN);
+				listUsers.add(addAdmin());
 			}
 
 			listUsers.add(user);
@@ -93,11 +103,9 @@ public class UserDao implements IUser {
 	public boolean logged(HttpSession session) {
 		boolean logged = false;
 		String user = (String) session.getAttribute("userLogado");
-		
 		if(user != null) {
 			
 		}
-		
 		return true;
 	}
 	

@@ -13,7 +13,7 @@ public class UserDao2 implements IUser2 {
 
 	@Override
 	public void insert(User user) {
-		String insert = "INSERT INTO user (name, register, password, typeUser, created_at) VALUES (?,?,?,?,?)";
+		String insert = "INSERT INTO user (name, register, password, typeUser) VALUES (?,?,?,?)";
 		PreparedStatement pstm = null;
 		Connection conn = null;
 
@@ -25,7 +25,6 @@ public class UserDao2 implements IUser2 {
 			pstm.setString(2, user.getRegister());
 			pstm.setString(3, user.getPassword());
 			pstm.setString(4, user.getTypeUser());
-			pstm.setString(5, user.getCreated_at());
 
 			conn.setAutoCommit(false);
 			pstm.executeUpdate();
@@ -42,7 +41,7 @@ public class UserDao2 implements IUser2 {
 		Connection conn = null;
 
 		try {
-			List<User> users = new ArrayList<>();
+			List<User> listUsers = new ArrayList<>();
 			conn = ConnectionFactory.getConnection();
 			pstm = conn.prepareStatement(select);
 			ResultSet rs = pstm.executeQuery(select);
@@ -52,57 +51,58 @@ public class UserDao2 implements IUser2 {
 				user.setName(rs.getString("name"));
 				user.setRegister(rs.getString("register"));
 				user.setTypeUser(rs.getString("typeUser"));
-				user.setCreated_at(rs.getString("created_at"));
-				users.add(user);
+				listUsers.add(user);
 			}
 			rs.close();
 			pstm.close();
-			return users;
+			return listUsers;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 //	VERIFICAR EXISTENCIA DA MATRICULA NO BANCO
-	public boolean validate(String register) {
-		String select = "SELECT 1 FROM user WHERE register = ?";
+	public Boolean validate(String name) {
+		String select = "SELECT name FROM user WHERE name = ?";
 		PreparedStatement pstm = null;
 		Connection conn = null;
-		boolean response;
+		boolean response = false;
 		try {
 			conn = ConnectionFactory.getConnection();
 			pstm = conn.prepareStatement(select);
-			pstm.setString(1, register);
 
-			int rs = pstm.executeUpdate(select);
-			response = (rs == 1) ? true : false;
-			pstm.close();
+			pstm.setString(1, name);
+			conn.setAutoCommit(false);
+			ResultSet rs = pstm.executeQuery(select);
+			while (rs.next()) {
+				response = true;
+			}
 		} catch (Exception e) {
+			rollbackAndClose(conn, pstm);
 			throw new RuntimeException(e);
 		}
 		return response;
 	}
 
-	public boolean login(String register, String password) {
-		String select = "SELECT * FROM user WHERE register = ? AND password = ?";
+	public static boolean login(User user) {
+		String select = "SELECT * FROM user WHERE register = '?' AND password = '?'";
 		PreparedStatement pstm = null;
 		Connection conn = null;
-		boolean response;
+		boolean response = false;
 		try {
 			conn = ConnectionFactory.getConnection();
 			pstm = conn.prepareStatement(select);
-			pstm.setString(1, register);
-			pstm.setString(2, password);
+			pstm.setString(1, user.getRegister());
+			pstm.setString(2, user.getPassword());
 
-			response = pstm.execute(select);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				pstm.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			conn.setAutoCommit(false);
+			ResultSet rs = pstm.executeQuery(select);
+			while (rs.next()) {
+				response = true;
 			}
+		} catch (SQLException e) {
+			rollbackAndClose(conn, pstm);
+			e.printStackTrace();
 		}
 		return response;
 	}
@@ -148,6 +148,7 @@ public class UserDao2 implements IUser2 {
 				pstm = conn.prepareStatement(delete);
 
 				pstm.setLong(1, id);
+
 				conn.setAutoCommit(false);
 				pstm.executeUpdate(delete);
 				conn.commit();
@@ -160,7 +161,7 @@ public class UserDao2 implements IUser2 {
 		return ok;
 	}
 
-	public void rollbackAndClose(Connection conn, PreparedStatement pstm) {
+	private static void rollbackAndClose(Connection conn, PreparedStatement pstm) {
 		try {
 			conn.rollback();
 		} catch (SQLException e2) {

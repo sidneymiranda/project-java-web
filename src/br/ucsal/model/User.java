@@ -1,8 +1,6 @@
 package br.ucsal.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class User implements Serializable {
 
@@ -13,18 +11,20 @@ public class User implements Serializable {
 	private String register;
 	private String password;
 	private String typeUser;
-	private String created_at;
 
 	public User() {
 
 	}
 	
-	public User(String name, String register, String password) {
+	public User(String name, String register) {
 		this.name = name;
 		this.register = register;
-		this.password = password;
+	}
+
+	public User(String name, String register, String password) {
+		super();
+		this.name = name;
 		this.typeUser = "user";
-		this.created_at = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	}
 
 	public User(String name, String register, String password, String typeUser) {
@@ -68,19 +68,11 @@ public class User implements Serializable {
 		this.typeUser = typeUser;
 	}
 
-	public String getCreated_at() {
-		return created_at;
-	}
-	
-	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((created_at == null) ? 0 : created_at.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((register == null) ? 0 : register.hashCode());
@@ -97,11 +89,6 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (created_at == null) {
-			if (other.created_at != null)
-				return false;
-		} else if (!created_at.equals(other.created_at))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;

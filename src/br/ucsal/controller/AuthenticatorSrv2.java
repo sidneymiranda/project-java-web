@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ucsal.dao.UserDao2;
+import br.ucsal.model.User;
 
 @WebServlet("/login")
 public class AuthenticatorSrv2 extends HttpServlet {
@@ -26,8 +27,9 @@ public class AuthenticatorSrv2 extends HttpServlet {
 
 		String registry = req.getParameter("registry");
 		String password = req.getParameter("password");
-
-		if (new UserDao2().login(registry, password)) {
+		User user = new User(registry, password);
+		
+		if (UserDao2.login(user)) {
 			res.sendRedirect("/VirtualBookcase/pages/profile/admin/home.jsp");
 			return;
 		}

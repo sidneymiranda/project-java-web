@@ -39,7 +39,7 @@ public class BookDao2 implements IBook2 {
 		} catch (Exception e) {
 			rollbackAndClose(conn, pstm);
 		}
-		return true;
+		return ok;
 	}
 
 	@Override
