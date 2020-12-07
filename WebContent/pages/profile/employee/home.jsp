@@ -32,8 +32,6 @@
 	<c:url value="/pages/profile/employee/read.jsp" var="read" />
 	<c:url value="/pages/profile/employee/update.jsp" var="update" />
 	<c:url value="/pages/profile/employee/delete.jsp" var="delete" />
-	
-	
 	<jsp:include page="/includes/header.jsp" />
 	
 	<nav class="sidebar">
@@ -55,7 +53,7 @@
 </nav>
 		
 	<section class="content">
-		<form id="form-query" class="form-query" action="" method="post">
+		<form id="form-query" class="form-query" action="${pageContext.request.contextPath}/crud?action=find" method="post">
 			<label 
 				for="label-query" 
 				class="label-query">
@@ -67,6 +65,7 @@
 				id="input-query" 
 				autofocus
 				class="input-query"
+				placeholder="Nome do autor, título, ISBN ou vazio para todos..."
 			>
 			<input 
 				type="reset"
@@ -105,7 +104,7 @@
 					</tr>
 				</thead>
 				 <tbody>					 
-					 <c:forEach items="${listBooks}" var="obj">
+					 <c:forEach items="${resultList}" var="obj">
 							<tr>
 								<td><c:out value="${obj.title}" /></td>
 								<td><c:out value="${obj.author}" /></td>
@@ -114,7 +113,7 @@
 								<td><c:out value="${obj.edition}" /></td>	
 								<td>
 									<a href="${read}?action=read&title=${obj.title}&author=${obj.author}&year=${obj.year}&isbn=${obj.isbn} 
-									&edition=${obj.edition}&idioma=${obj.idioma}&genre=${obj.genre}&sinopse=${obj.sinopse}"
+									&edition=${obj.edition}&idioma=${obj.idioma}&publishingCompany=${obj.publishingCompany}&sinopse=${obj.sinopse}"
 									class="btn btn-primary">
 										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="white" xmlns="http://www.w3.org/2000/svg">
 										  <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
@@ -122,14 +121,14 @@
 										</svg>
 									</a>									
 									<a href="${update}?action=update&title=${obj.title}&author=${obj.author}&year=${obj.year}&isbn=${obj.isbn}
-									&edition=${obj.edition}&idioma=${obj.idioma}&genre=${obj.genre}&sinopse=${obj.sinopse}"
-									class="btn btn-warning" data-toggle="modal" data-target="#modalUpdate" data-title="${obj.title}">
+									&edition=${obj.edition}&idioma=${obj.idioma}&publishingCompany=${obj.publishingCompany}&sinopse=${obj.sinopse}"
+									class="btn btn-warning">
 										<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="black">
   									<path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
 										</svg>
 									</a>									
 									<a href="${delete}?action=delete&title=${obj.title}&author=${obj.author}&year=${obj.year}&isbn=${obj.isbn}
-									&edition=${obj.edition}&idioma=${obj.idioma}&genre=${obj.genre}&sinopse=${obj.sinopse}" 
+									&edition=${obj.edition}&idioma=${obj.idioma}&publishingCompany=${obj.publishingCompany}&sinopse=${obj.sinopse}" 
 									class="btn btn-danger">
 										<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="white">
 										  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -143,8 +142,8 @@
 			</table>
 		</section>
 	</section>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/scripts.js"></script>
 	<script src="${pageContext.request.contextPath}/js/results.js"></script>
@@ -185,11 +184,11 @@
 						<div class="content-div">
 							<div class="content-div-label">
 								<label class="grow" for="idioma">Idioma</label>
-								<label class="grow" for="genre">Gênero</label>
+								<label class="grow" for="publishingCompany">Editora</label>
 							</div>
 							<div class="content-div-label">
 								<input class="input grow" type="text" id="idioma" name="idioma" autocomplete="off">
-								<input class="input grow" type="text" id="genre" name="genre" autocomplete="off">
+								<input class="input grow" type="text" id="publishingCompany" name="publishingCompany" autocomplete="off">
 							</div>
 						</div>
 					
@@ -208,12 +207,7 @@
 					id="newRegister">
 			</div>
 		</form>
-	        
 	      </div>
-	      <!-- <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div> -->
 	    </div>
 	  </div>
 	</div>

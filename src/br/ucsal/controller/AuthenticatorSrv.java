@@ -34,7 +34,6 @@ public class AuthenticatorSrv extends HttpServlet {
 
 		if (userDao.exists(registry, password, session)) {
 			String profile = (String) session.getAttribute("profile");
-
 			res.sendRedirect("/VirtualBookcase/pages/profile/" + profile + "/home.jsp");
 			return;
 		}

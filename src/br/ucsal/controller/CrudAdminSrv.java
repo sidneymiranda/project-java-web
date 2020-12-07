@@ -1,7 +1,6 @@
 package br.ucsal.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,38 +28,26 @@ public class CrudAdminSrv extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		String register = req.getParameter("register");
-		String name = req.getParameter("name");
+		String name = req.getParameter("name").toUpperCase();
 		String password = req.getParameter("password");
 		String typeUser = req.getParameter("typeUser");
-		String action = req.getParameter("action");
-		LocalDate date = LocalDate.now();
-		
 		User user = new User(name, register, password, typeUser);
 
+		String action = req.getParameter("action");
 		switch (action) {
 		
 		case "create":
 			new UserDao().insert(user, session);
-
 			res.sendRedirect(URL);
 			break;
-
 		case "update":
-			if (new UserDao().update(user, session)) {
-
-				// msg de sucesso
-			}
-
+			new UserDao().update(user, session);
 			res.sendRedirect(URL);
 			break;
-
 		case "delete":
 			new UserDao().remove(user, session);
-				// msg de sucesso
-			
 			res.sendRedirect(URL);
 			break;
-
 		default:
 			res.sendRedirect(URL);
 			break;

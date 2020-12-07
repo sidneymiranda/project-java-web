@@ -41,15 +41,7 @@
 		type="text" 
 		name="typeUser"
 		class="input"
-		value="${param.typeUser}"
-		readonly
-	>
-	<label>Data do cadastro</label>
-	<input 
-		type="text" 
-		name="typeUser"
-		class="input"
-		value="${param.date}"
+		value="${param.typeUser == 'employee' ? 'funcionário' : param.typeUser == 'user' ? 'estudante' : 'administrador'}"
 		readonly
 	>
 	<div class="buttons">

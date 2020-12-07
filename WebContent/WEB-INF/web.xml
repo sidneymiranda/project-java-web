@@ -25,6 +25,10 @@
 		<servlet-name>crudAdmin</servlet-name>
 		<servlet-class>br.ucsal.controller.CrudAdminSrv</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>servletUser</servlet-name>
+		<servlet-class>br.ucsal.controller.SearchSrv</servlet-class>
+	</servlet>
 	
 	
 	<servlet-mapping>
@@ -43,5 +47,9 @@
 	<servlet-mapping>
 		<servlet-name>crudAdmin</servlet-name>
 		<url-pattern>/crudAdmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>servletUser</servlet-name>
+		<url-pattern>/search</url-pattern>
 	</servlet-mapping>
 </web-app>

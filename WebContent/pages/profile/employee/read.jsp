@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +7,14 @@
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
-<title>DeleÃ§Ã£o de dados</title>
+<title>Deleção de dados</title>
 </head>
 <body>
 
 	<h1 class="title-confirm">Livro selecionado</h1>	
 	
 	<form class="form" method="" action="">
-		<label for="title">TÃ­tulo</label>
+		<label for="title">Título</label>
 		<input 
 			type="text" 
 			class="input"
@@ -35,21 +35,21 @@
 		
 		<div class="content-div">
 			<div class="content-div-label">
-				<label class="grow" for="year">Ano da PublicaÃ§Ã£o</label>
+				<label class="grow" for="year">Ano da Publicação</label>
 				<label class="grow" for="isbn">ISBN</label>
-				<label class="grow"	for="edition">EdiÃ§Ã£o</label>
+				<label class="grow"	for="edition">Edição</label>
 			</div>
 			<div class="content-div-input">
 				<input 
-					class="grow" 
 					type="text" 
+					class="input grow"
 					id="year"
 					name="year" 
 					value="${param.year}" 
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow"
 					type="text" 
 					id="isbn"
 					name="isbn"
@@ -57,7 +57,7 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="input grow"
 					type="text" 
 					id="edition"
 					name="edition"
@@ -69,11 +69,11 @@
 		<div class="content-div">
 			<div class="content-div-label">
 				<label class="grow" for="idioma">Idioma</label>
-				<label class="grow"	for="genre">GÃªnero</label>
+				<label class="grow"	for="publishingCompany">Editora</label>
 			</div>
 			<div class="content-div-label">
 				<input 
-					class="grow" 
+					class="grow input" 
 					type="text" 
 					id="idioma"
 					name="idioma"
@@ -81,11 +81,11 @@
 					readonly
 				>
 				<input 
-					class="grow" 
+					class="grow input"
 					type="text" 
-					id="genre"
-					name="genre"
-					value="${param.genre}" 
+					id="publishingCompany"
+					name="publishingCompany"
+					value="${param.publishingCompany}" 
 					readonly
 				>
 			</div>
@@ -95,6 +95,7 @@
 		<textarea 
 			id="sinopse"
 			name="sinopse" 
+			class="input"
 			readonly
 		>${param.sinopse}</textarea>
 		

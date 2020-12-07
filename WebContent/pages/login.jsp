@@ -39,7 +39,7 @@
 				<div class="form-login-input">
 					<h1>LOGIN</h1>
 
-					<form action="${pageContext.request.contextPath}/login" method="post" id="formLogin">
+					<form action="${pageContext.request.contextPath}/authenticator" method="post" id="formLogin">
 						<fieldset>
 							<input 
 								type="text" 

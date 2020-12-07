@@ -40,14 +40,13 @@
 	<label>Perfil de acesso</label>
 
 		<div class="type-user">
-
 			<input type="radio" name="typeUser" id="admin" value="admin" ${param.typeUser == 'admin' ? 'checked' : ''} required />
 			<label for="admin">Administrador</label>
 			
 			<input type="radio" name="typeUser" id="employee" value="employee" ${param.typeUser == 'employee' ? 'checked' : ''} required />
 			<label for="default">Funcionário</label> 
 			
-			<input type="radio" name="typeUser" id="user" value="user" ${param.typeUser == 'default' ? 'checked' : ''} required />
+			<input type="radio" name="typeUser" id="user" value="user" ${param.typeUser == 'user' ? 'checked' : ''} required />
 			<label for="default">Estudante</label>
 		</div>
 	

@@ -8,7 +8,7 @@
 .form form input[type='text'] {
   width: 40vw;
   padding: 0.5rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border-radius: 1rem;
   outline: none;
 }

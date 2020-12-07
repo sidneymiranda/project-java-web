@@ -1,7 +1,6 @@
 package br.ucsal.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.ucsal.dao.UserDao;
-import br.ucsal.dao.UserDao2;
 import br.ucsal.model.User;
 
 public class NewUserSrv extends HttpServlet {
@@ -30,9 +28,6 @@ public class NewUserSrv extends HttpServlet {
 		HttpSession session = req.getSession();
 		String action = req.getParameter("action");
 		switch (action) {
-		case "validar":
-			
-			break;
 		
 		case "insert":
 			String register = req.getParameter("register");
@@ -41,7 +36,6 @@ public class NewUserSrv extends HttpServlet {
 
 			User user = new User(name, register, password);
 			new UserDao().insert(user, session);
-//			new UserDao2().insert(user);
 			res.sendRedirect("pages/login.jsp");
 			break;
 		default:

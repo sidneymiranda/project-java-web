@@ -67,7 +67,7 @@
 		<div class="content-div">
 			<div class="content-div-label">
 				<label class="grow" for="idioma">Idioma</label>
-				<label class="grow"	for="genre">Gênero</label>
+				<label class="grow"	for="publishingCompany">Editora</label>
 			</div>
 			<div class="content-div-label">
 				<input 
@@ -81,9 +81,9 @@
 				<input 
 					class="input grow" 
 					type="text" 
-					id="genre"
-					name="genre"
-					value="${param.genre != '' ? param.genre : 'NÃO INFORMADO'}" 
+					id="publishingCompany"
+					name="publishingCompany"
+					value="${param.publishingCompany != '' ? param.publishingCompany : 'NÃO INFORMADO'}" 
 					readonly
 				>
 			</div>

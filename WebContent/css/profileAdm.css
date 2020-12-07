@@ -130,7 +130,7 @@
 
 .input-query {
 	padding: 0.4rem;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	border: 0px;
 	border-bottom: 1px solid #ced4da;
 	outline: none;

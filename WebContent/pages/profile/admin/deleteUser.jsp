@@ -7,9 +7,10 @@
 <meta name="author" content="Sidney Miranda"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/globals.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profileAdm.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 <title>Configuração de usuários</title>
 </head>
-<body>
+<body class="container">
 <h1>Tem certeza que deseja remover este usuário?</h1>
 <form class="form" action="${pageContext.request.contextPath}/crudAdmin?action=${param.action}" method="post">
 	<label>Nome</label>
@@ -18,6 +19,7 @@
 		name="name"
 		class="input" 
 		value="${param.name}"
+		readonly
 	>
 	<label>Matrícula</label>
 	<input 
@@ -25,6 +27,7 @@
 		name="register"
 		class="input" 
 		value="${param.register}"
+		readonly
 	>
 	<label>Perfil de acesso</label>
 	<input 
@@ -32,15 +35,16 @@
 		name="typeUser"
 		class="input"
 		value="${param.typeUser}"
+		readonly
 	>
 	<div class="buttons">
 			<input
-				class="btn button-remove" 
+				class="btn btn-danger" 
 				type="submit" 
 				value="REMOVER"
 			>
 			<a 
-				class="btn button-cancel"
+				class="btn btn-secondary"
 				href="${pageContext.request.contextPath}/pages/profile/admin/users.jsp"
 			>
 				CANCELAR

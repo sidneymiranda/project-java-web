@@ -24,11 +24,25 @@
 <body>
 	<jsp:include page="/includes/header.jsp" />
 	<section class="form">
-		<form action="#" method="post" id="form-search">
-			<label class="input" for="input-search">Consulta</label> <input
-				type="text" id="input-search" /> <input type="submit"
-				class="btn btn-primary" value="Pesquisar" /> <input type="reset"
-				value="Limpar" class="btn btn-secondary" />
+		
+		<form action="${pageContext.request.contextPath}/search" method="post" id="form-search">
+			<label class="input" for="input-search">Consulta</label> 
+			<input
+				type="text" 
+				id="input-search"
+				name="query"
+				placeholder="Nome do autor, título, ISBN ou vazio para todos... "
+			/> 
+			<input
+				type="submit"
+				class="btn btn-primary" 
+				value="Pesquisar"
+			/> 
+			<input 
+				type="reset"	
+				value="Limpar"
+				class="btn btn-secondary" 
+			/>
 		</form>
 	</section>
 	
@@ -36,7 +50,7 @@
 	
 	<section>		
 		<table class="table table-hover table mt-5">
-				<thead class="thead-ligth">
+				<thead class="thead-dark">
 					<tr>
 						<th scope="col">TÍTULO</th>
 						<th scope="col">AUTOR</th>
@@ -46,7 +60,7 @@
 					</tr>
 				</thead>
 				 <tbody>					 
-					 <c:forEach items="${listBooks}" var="obj">
+					 <c:forEach items="${resultList}" var="obj">
 							<tr>
 								<td><c:out value="${obj.title}" /></td>
 								<td><c:out value="${obj.author}" /></td>
@@ -62,8 +76,8 @@
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		src="${pageContext.request.contextPath}/js/popper.min.js"></script>
 	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 </html>

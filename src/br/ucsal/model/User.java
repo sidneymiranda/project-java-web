@@ -6,7 +6,6 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
 	private String name;
 	private String register;
 	private String password;
@@ -16,24 +15,18 @@ public class User implements Serializable {
 
 	}
 	
-	public User(String name, String register) {
+	public User(String name, String register, String password) {
 		this.name = name;
 		this.register = register;
-	}
-
-	public User(String name, String register, String password) {
-		super();
-		this.name = name;
+		this.password = password;
 		this.typeUser = "user";
 	}
 
 	public User(String name, String register, String password, String typeUser) {
-		super();
+		this.name = name;
+		this.register = register;
+		this.password = password;
 		this.typeUser = typeUser;
-	}
-	
-	public Long getId() {
-		return id;
 	}
 
 	public String getName() {
@@ -67,7 +60,6 @@ public class User implements Serializable {
 	public void setTypeUser(String typeUser) {
 		this.typeUser = typeUser;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -111,5 +103,4 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-
 }

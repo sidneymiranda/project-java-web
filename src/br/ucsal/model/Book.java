@@ -6,39 +6,30 @@ public class Book implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
 	private String title;
 	private String author;
 	private String year;
 	private String isbn;
 	private String edition;
 	private String idioma;
-	private String genre;
+	private String publishingCompany;
 	private String sinopse;
 	
 	public Book() {
 	}
 	
 	public Book(String title, String author, String year, String isbn, String edition, String idioma,
-			String genre, String sinopse) {
+			String publishingCompany, String sinopse) {
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.edition = edition;
 		this.idioma = idioma;
-		this.genre = genre;
+		this.publishingCompany = publishingCompany;
 		this.sinopse = sinopse;
 	}
-	
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public String getTitle() {
 		return title;
 	}
@@ -87,12 +78,12 @@ public class Book implements Serializable {
 		this.idioma = idioma;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getPublishingCompany() {
+		return publishingCompany;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setPublishingCompany(String publishingCompany) {
+		this.publishingCompany = publishingCompany;
 	}
 
 	public String getSinopse() {
@@ -109,9 +100,9 @@ public class Book implements Serializable {
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((edition == null) ? 0 : edition.hashCode());
-		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		result = prime * result + ((publishingCompany == null) ? 0 : publishingCompany.hashCode());
 		result = prime * result + ((sinopse == null) ? 0 : sinopse.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((year == null) ? 0 : year.hashCode());
@@ -137,11 +128,6 @@ public class Book implements Serializable {
 				return false;
 		} else if (!edition.equals(other.edition))
 			return false;
-		if (genre == null) {
-			if (other.genre != null)
-				return false;
-		} else if (!genre.equals(other.genre))
-			return false;
 		if (idioma == null) {
 			if (other.idioma != null)
 				return false;
@@ -151,6 +137,11 @@ public class Book implements Serializable {
 			if (other.isbn != null)
 				return false;
 		} else if (!isbn.equals(other.isbn))
+			return false;
+		if (publishingCompany == null) {
+			if (other.publishingCompany != null)
+				return false;
+		} else if (!publishingCompany.equals(other.publishingCompany))
 			return false;
 		if (sinopse == null) {
 			if (other.sinopse != null)
@@ -169,5 +160,4 @@ public class Book implements Serializable {
 			return false;
 		return true;
 	}
-	
 }

@@ -93,8 +93,8 @@
 					 <c:forEach items="${listUsers}" var="user">
 							<tr scope="row">
 								<td><c:out value="${user.name}" /></td>
-								<td><c:out value="${user.register}" /></td>
-								<td><c:out value="${user.typeUser == 'employee' ? 'funcionário' : user.typeUser == 'default' ? 'estudante' : 'administrador'}" /></td>
+								<td><c:out value="${user.register}"/></td>
+								<td><c:out value="${user.typeUser == 'employee' ? 'funcionário' : user.typeUser == 'user' ? 'estudante' : 'administrador'}" /></td>
 								<td>
 									<a href="${view}?action=viewBook&name=${user.name}&register=${user.register}&typeUser=${user.typeUser}"
 									class="btn btn-primary">
@@ -154,12 +154,13 @@
 							<input type="radio" name="typeUser" id="user" value="user" required />
 							<label for="default">Estudante</label>
 						</div>
-
-						<input type="text" name="register" class="input" placeholder="MATRÍCULA" maxlength="10" required />
-						<input type="text" name="name" class="input" placeholder="NOME" required /> 
-						<input type="password" name="password" class="input" placeholder="SENHA" required /> 
-						<input type="password" name="confirmPassword" class="input"	placeholder="REPETIR A SENHA" required /> 
 						
+						<div>
+							<input type="text" name="register" class="input" placeholder="MATRÍCULA" maxlength="10" required />
+							<input type="text" name="name" class="input" placeholder="NOME" required /> 
+							<input type="password" name="password" class="input" placeholder="SENHA" required /> 
+							<input type="password" name="confirmPassword" class="input"	placeholder="REPETIR A SENHA" required /> 
+						</div>
 						<div class="modal-footer">
 						<input class="btn btn-white" data-dismiss="modal" value="CANCELAR" />
 						<input class="btn btn-success" type="submit" id="register" value="CADASTRAR" />
